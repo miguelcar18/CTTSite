@@ -12,7 +12,11 @@
 
 <?php
             include("funciones_mysql.php");
+            include("../operaciones/funciones.php");
             $conn=conectar();
+            
+            $ew = obtenerNavegadorWeb();
+            $navegador = $ew['nombre'];
             
             if (!empty($_POST['nick']) && !empty($_POST['password']))
             {
@@ -27,6 +31,7 @@
                     for($is=1;$is<=$FILASINGRESO;$is++)
                     {
                         $rs=mysql_fetch_array($SQLINGRESO);
+                        $id_usuario=$rs['idusuario'];
                         $nick_usuario=$rs['nick_usuario'];
                         $clave_usuario=$rs['clave_usuario'];
                         $nombre_usuario=$rs['nombre_usuario'];
@@ -51,13 +56,14 @@
                         
                         else if($clav==$clave_usuario && $habilitado==1)
                         {
-                            /*session_start();
-                            $_SESSION['nick_usuario']=$nick_usuario;
-                            $_SESSION['clave_usuario']=$clave_usuario;
-                            $_SESSION['nombre_usuario']=$nombre_usuario;
-                            $_SESSION['cedula_usuario']=$cedula_usuario;
-                            $_SESSION['tipo_usuario']=$tipo_usuario;
-                            $_SESSION['placa_usuario']=$placa_usuario;*/
+                            $stringrsesion="insert into ctt_usuarios_sesiones "
+                                    . "("
+                                    . "idusuario_sesion, so_sesion, navegador_sesion, fecha_sesion"
+                                    . ") values "
+                                    . "("
+                                    . "'".$id_usuario."', '".php_uname('s')."', '".$navegador."', now()"
+                                    . ")";
+                            $sqlrsesion=mysql_query($stringrsesion) or die ("Error en la linea 63: ".mysql_error());
                              ?>
                             <script>
                                 // Creamos un objeto

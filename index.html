@@ -21,12 +21,6 @@
         
         <script>
             
-        function formatocorreo() 
-        {
-            var verificar=true;
-            var expRegEmail=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-        }
-            
         function fixelement(element, message) {
                 $(document).ready(function(){
                     $.alert.open({
@@ -48,31 +42,31 @@
             
             if (form.nombre_usuario.value == "" || form.nombre_usuario.value == "user o username@gmail.com") 
             {
-                fixElement(form.nombre_usuario, "Por favor, ingrese un nombre de usuario.");
+                fixelement(form.nombre_usuario, "Por favor, ingrese un nombre de usuario.");
             }
             else if (form.email.value == "" || form.email.value == "username@gmail.com") 
             {
-                fixElement(form.email, "Por favor, ingrese un email.");
+                fixelement(form.email, "Por favor, ingrese un email.");
             }
             else if (!expRegEmail.exec(form.email.value)) 
             {
-                fixElement(form.email, "Por favor, ingrese un correo electronico valido.");
+                fixelement(form.email, "Por favor, ingrese un correo electronico valido.");
             }
             else if (form.password1.value == "" || form.password1.value == "contraseña") 
             {
-                fixElement(form.password1, "Por favor, ingrese una contraseña.");
+                fixelement(form.password1, "Por favor, ingrese una contraseña.");
             }
             else if (form.password2.value == "" || form.password2.value == "repetir contraseña") 
             {
-                fixElement(form.password2, "Por favor, repita la contraseña.");
+                fixelement(form.password2, "Por favor, repita la contraseña.");
             }
             else if (form.password2.value != form.password1.value) 
             {
-                fixElement(form.password2, "Las contraseñas deben de ser iguales.");
+                fixelement(form.password2, "Las contraseñas deben de ser iguales.");
             }
             else if (form.checkbox.checked == false) 
             {
-                fixElement(form.checkbox, "Debe aceptar las condiciones");
+                fixelement(form.checkbox, "Debe aceptar las condiciones");
             }
             else 
             {
@@ -86,11 +80,11 @@
             var passed = false;
             if (form.nick.value == "" || form.nick.value == "user o username@gmail.com") 
             {
-                fixElement(form.nick, "Por favor, ingrese un nombre de usuario.");
+                fixelement(form.nick, "Por favor, ingrese un nombre de usuario.");
             }
             else if (form.password.value == "" || form.password.value == "contraseña") 
             {
-                fixElement(form.password, "Por favor, ingrese una contraseña.");
+                fixelement(form.password, "Por favor, ingrese una contraseña.");
             }
             else 
             {
@@ -99,7 +93,7 @@
             return passed;
         }
     </script>
-        
+        <!--
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#horizontalTab').easyResponsiveTabs({
@@ -121,15 +115,10 @@
                     fit: true
                 });
             });
-        </script>
+        </script>-->
         
     </head>
     <body>
-    <script>
-            $(document).ready(function(){
-            $.alert.open('MENSAJE','Datos ingresados correctamente..');
-            });
-        </script>
         <div class="wrap">
             <div class="span_of_2"><!-- start span_of_2-->
 		<div class="span1_of_2"><!-- start span1_of_2 -->
