@@ -1,0 +1,193 @@
+<html>
+    <head>
+        <title>CTTSite</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Monda:400,700' rel='stylesheet' type='text/css'>
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/clndr.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/alert.min_mensaje.css" rel="stylesheet"/>
+        <link href="css/theme.min_mensaje.css" rel="stylesheet"/>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/easyResponsiveTabs.js"></script>
+        <script src="js/underscore-min.js"></script>
+        <script src="js/moment-2.2.1.js"></script>
+        <script src="js/clndr.js"></script>
+        <script src="js/site.js"></script>
+        <script src="js/jquery_mensaje.js"></script>
+        <script src="js/jquery-ui_mensaje.js"></script>
+        <script src="js/alert.min_mensaje.js"></script>
+        
+        <script>
+            
+        function formatocorreo() 
+        {
+            var verificar=true;
+            var expRegEmail=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        }
+            
+        function fixelement(element, message) {
+                $(document).ready(function(){
+                    $.alert.open({
+                    title: 'ADVERTENCIA',
+                    icon: 'warning',
+                    content: message,
+                    width: 350,
+                    callback: function() {
+                            element.focus();
+                        }
+                    });
+                });
+            }
+
+        function verifica(form) 
+        {
+            var passed = false;
+            var expRegEmail=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+            
+            if (form.nombre_usuario.value == "" || form.nombre_usuario.value == "user o username@gmail.com") 
+            {
+                fixElement(form.nombre_usuario, "Por favor, ingrese un nombre de usuario.");
+            }
+            else if (form.email.value == "" || form.email.value == "username@gmail.com") 
+            {
+                fixElement(form.email, "Por favor, ingrese un email.");
+            }
+            else if (!expRegEmail.exec(form.email.value)) 
+            {
+                fixElement(form.email, "Por favor, ingrese un correo electronico valido.");
+            }
+            else if (form.password1.value == "" || form.password1.value == "contraseña") 
+            {
+                fixElement(form.password1, "Por favor, ingrese una contraseña.");
+            }
+            else if (form.password2.value == "" || form.password2.value == "repetir contraseña") 
+            {
+                fixElement(form.password2, "Por favor, repita la contraseña.");
+            }
+            else if (form.password2.value != form.password1.value) 
+            {
+                fixElement(form.password2, "Las contraseñas deben de ser iguales.");
+            }
+            else if (form.checkbox.checked == false) 
+            {
+                fixElement(form.checkbox, "Debe aceptar las condiciones");
+            }
+            else 
+            {
+                passed = true;
+            }
+            return passed;
+        }
+        
+        function verifica2(form) 
+        {
+            var passed = false;
+            if (form.nick.value == "" || form.nick.value == "user o username@gmail.com") 
+            {
+                fixElement(form.nick, "Por favor, ingrese un nombre de usuario.");
+            }
+            else if (form.password.value == "" || form.password.value == "contraseña") 
+            {
+                fixElement(form.password, "Por favor, ingrese una contraseña.");
+            }
+            else 
+            {
+                passed = true;
+            }
+            return passed;
+        }
+    </script>
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#horizontalTab').easyResponsiveTabs({
+                    type: 'default', //Types: default, vertical, accordion           
+                    width: 'auto', //auto or any width like 600px
+                    fit: true,   // 100% fit in a container
+                    closed: 'accordion', // Start closed if in accordion view
+                    activate: function() { // Callback function if tab is switched (event)
+                        var $tab = $(this);
+                        var $info = $('#tabInfo');
+                        var $name = $('span', $info);
+                        $name.text($tab.text());
+                        $info.show();
+                    }
+                });
+                $('#verticalTab').easyResponsiveTabs({
+                    type: 'vertical',
+                    width: 'auto',
+                    fit: true
+                });
+            });
+        </script>
+        
+    </head>
+    <body>
+    <script>
+            $(document).ready(function(){
+            $.alert.open('MENSAJE','Datos ingresados correctamente..');
+            });
+        </script>
+        <div class="wrap">
+            <div class="span_of_2"><!-- start span_of_2-->
+		<div class="span1_of_2"><!-- start span1_of_2 -->
+                    <img class="img1" src="images/central.jpg" alt="Central">
+                    <img class="img1" src="images/central.jpg" alt="Central">
+                </div><!-- end span1_of_3 -->
+                <div class="span2_of_2 left"><!-- start span2_of_2 -->
+                    <div class="subcribes" style="width:100%;"><!-- start subcribe -->
+                    <h4>IDENTIFICARSE</h4>
+	    		<div class="subscribe">
+                            <form name="form01" id="form01" method="post" action="conexion/validar.php" onSubmit = "return verifica2(this)">
+                                <input type="text" class="text" name="nick" id="nick" value="user o username@gmail.com" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'user o username@gmail.com';}">
+                                <span>Nombre  usuario o nick</span>
+                                <input type="text" class="text" name="password" id="password" value="contraseña" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'contraseña';}">
+                                <span>Contraseña</span>
+                                <div>
+                                    <input type="checkbox" name="checkbox" id="checkbox">Recordar contraseña
+                                    <input type="submit" value="ENTRAR" />
+                                    <div class="clear"></div>
+                                    <!--Alternativa
+                                    <a class="suscri" href="registrarse.html" target='destino'/>Registrese</a> 
+                                    -->
+                                </div>
+                            </form>
+                        </div>
+                        <!--Alternativa   
+                        <iframe width="105%" height="510" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="#" name='destino' ></iframe>
+                        <br>
+                        -->
+                    </div><!-- end subcribe -->
+                    <div class="clear"></div>
+                    <div class="subcribes" style="width:100%;"><!-- start subcribe -->
+                        <h4>Registro</h4>
+                        <div class="subscribe">
+                            <form name="form02" id="form02" method="post" action="conexion/ingreso.php" onSubmit = "return verifica(this)">
+                                <input type="text" name="nombre_usuario" id="nombre_usuario" value="user o username@gmail.com" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'user o username@gmail.com';}">
+                                <span>Nombre  usuario o nick</span>
+                                <input type="text" name="email" id="email" value="username@gmail.com" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'username@gmail.com';}">
+                                <span>eMail</span>
+                                <input type="text" name="password1" id="password1" value="contraseña" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'contraseña';}">
+                                <span>Contraseña</span>
+                                <input type="text" name="password2" id="password2" value="repetir contraseña" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'repetir contraseña';}">
+                                <span>Repetir Contraseña</span>
+                                <div>
+                                    <input type="checkbox" name="checkbox">Aceptó condiciones
+                                    <br><br>
+                                    <input type="submit" value="Registro" onClick="javascript:EnviarDatos();"/>
+                                    <!-- boton de cancelar	
+                                        <input type="reset" value="Cancelar"/> 
+                                        no se implementa pero se deja por si se desea implementar ( revision de CSS en ese caso)
+                                    -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- end span2_of_2 -->
+                <div class="clear"></div>
+            </div>
+        </div>
+    </body>
+</html>
