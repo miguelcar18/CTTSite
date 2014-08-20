@@ -72,7 +72,7 @@
                                 localStorage.setItem('key', JSON.stringify(object));
                             </script>
                             <?php
-                            pasar("../PagPersonal.html");
+                            pasar("../PagPersonal.php");
                         }
                         else
                         {
