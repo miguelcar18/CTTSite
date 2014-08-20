@@ -1,30 +1,34 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-	<title>CTT | Home :: Pag.Personal</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link href='http://fonts.googleapis.com/css?family=Monda:400,700' rel='stylesheet' type='text/css'>
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<script src="js/jquery.min.js"></script>
-	<script src="js/easyResponsiveTabs.js"></script>
-	<script type="text/javascript">
-	    $(document).ready(function() {
-		$('#horizontalTab').easyResponsiveTabs({
-		    type: 'default', //Types: default, vertical, accordion           
-		    width: 'auto', //auto or any width like 600px
-		    fit: true, // 100% fit in a container
-		    closed: 'accordion', // Start closed if in accordion view
-		    activate: function(event) { // Callback function if tab is switched
-			var $tab = $(this);
-			var $info = $('#tabInfo');
-			var $name = $('span', $info);
+        <title>CTT | Home :: Pag.Personal</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Monda:400,700' rel='stylesheet' type='text/css'>
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <script src="js/jquery.min.js"></script>
+        <script src="js/easyResponsiveTabs.js"></script>
+        <!----start-accordinatio-files--->
+        <script src="js/vallenato.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" href="css/vallenato.css" type="text/css" media="screen" charset="utf-8">
+        <!----start-accordinatio-files--->	
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#horizontalTab').easyResponsiveTabs({
+                    type: 'default', //Types: default, vertical, accordion           
+                    width: 'auto', //auto or any width like 600px
+                    fit: true, // 100% fit in a container
+                    closed: 'accordion', // Start closed if in accordion view
+                    activate: function(event) { // Callback function if tab is switched
+                        var $tab = $(this);
+                        var $info = $('#tabInfo');
+                        var $name = $('span', $info);
 
-			$name.text($tab.text());
+                        $name.text($tab.text());
 
-			$info.show();
-		    }
-		});
+                        $info.show();
+                    }
+                });
 
 		$('#verticalTab').easyResponsiveTabs({
 		    type: 'vertical',
@@ -61,7 +65,7 @@
 	<!--Menu-->
 	<div class="span1_of_list"><!-- start span1_of_list -->
 	    <ul class="social_list">
-		<li><a href=#"><i class="icon_1"></i></a></li>
+		<li><a href="#"><i class="icon_1"></i></a></li>
 		<li><a href="#"><i class="icon_2"></i></a></li>
 		<li><a href="#"><i class="icon_3"></i></a></li>
 		<div class="clear"></div>
@@ -113,9 +117,6 @@
 						<input type="text" class="text" value="contraseña" onfocus="this.value = '';" onblur="if (this.value == '') {
 	    this.value = 'contraseña';
 	}">
-
-
-
 						<span>Idioma preferido</span>			
 						<select name=idioma class="combo" >
 						    <option name=one value=uno> uno </option>
@@ -142,8 +143,8 @@
 							</div>
 						    </div>	
 						</div>
+                                            </form>
 					</div>
-					</form>
 				    </div>
 				    <div class="new_posts">
 					<div class="vertical_post">
@@ -161,8 +162,7 @@
 						<input type="text" class="text" value="contraseña" onfocus="this.value = '';" onblur="if (this.value == '') {
 	    this.value = 'contraseña';
 	}">
-						<div class="rel_para">
-						</div>
+						<div class="rel_para"></div>
 						<div class="main grid">
 						    <div class="col-1-2">
 							<div class="wrap-col">
@@ -176,15 +176,9 @@
 						    </div>	
 						</div>	
 					    </form>							
-
 					</div>
 				    </div>
-
 				    <div class="new_posts">
-					<!----start-accordinatio-files--->
-					<script src="js/vallenato.js" type="text/javascript" charset="utf-8"></script>
-					<link rel="stylesheet" href="css/vallenato.css" type="text/css" media="screen" charset="utf-8">
-					<!----start-accordinatio-files--->					
 					<h2 class="accordion-header">Opciones Grupo 1</h2>
 					<div class="accordion-content" style="width: 244px; display: none;">
 					    <div class="rel_post_list">
