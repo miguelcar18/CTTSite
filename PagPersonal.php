@@ -5,6 +5,10 @@ conectar();
 $stringGrupo="select * from ctt_grupos_opciones order by id_grupo asc";
 $sqlGrupo=mysql_query($stringGrupo) or die ("Error linea 7: ".mysql_error());
 $cantidadGrupo=mysql_num_rows($sqlGrupo);
+
+$stringOpcJav="select id_grupo, id_opcion from ctt_opciones order by id_grupo asc";
+$sqlOpcJav=mysql_query($stringOpcJav) or die("Error linea 10: ".mysql_error());
+$cantOpcJav=mysql_num_rows($sqlOpcJav);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -59,6 +63,32 @@ $cantidadGrupo=mysql_num_rows($sqlGrupo);
                 $("#titulo").html(object2.nombre_u+' '+object2.apellido_u);
             });   
         </script>
+        <script language ="Javascript">
+
+		<?php  
+		for ($aaa=1; $aaa<=$cantOpcJav; $aaa++)
+		{
+			$campoOpcJav=mysql_fetch_array($sqlOpcJav);
+			$idGrupo=$campoOpcJav['id_grupo'];
+			$idOpcion=$campoOpcJav['id_opcion'];
+			$nmarca=$idGrupo.$idOpcion;
+		?>
+		
+		function marca_<?php echo $nmarca ?>(){
+		if(document.getElementById("chck<?php echo $nmarca ?>").checked){
+		document.getElementById("texto_<?php echo $nmarca ?>").disabled=false
+		//document.getElementById("texto_<?php echo $nmarca ?>").style.backgroundColor='#FFFFFF'
+		document.getElementById("texto_<?php echo $nmarca ?>").focus()
+		}
+		else{
+		document.getElementById("texto_<?php echo $nmarca ?>").disabled=true
+		//document.getElementById("texto_<?php echo $nmarca ?>").style.backgroundColor='#D6D3CE'
+		}
+		}
+		<?php
+		}
+		?>
+</script>
     </head>
     <body>
         <script>
@@ -122,8 +152,8 @@ $cantidadGrupo=mysql_num_rows($sqlGrupo);
 	    this.value = 'Nick';
 	}">
 						<span>eMail</span>
-						<input type="text" class="text" value="contraseña" onfocus="this.value = '';" onblur="if (this.value == '') {
-	    this.value = 'contraseña';
+						<input type="text" class="text" value="contraseï¿½a" onfocus="this.value = '';" onblur="if (this.value == '') {
+	    this.value = 'contraseï¿½a';
 	}">
 						<span>Idioma preferido</span>			
 						<select name=idioma class="combo" >
@@ -158,17 +188,17 @@ $cantidadGrupo=mysql_num_rows($sqlGrupo);
 					<div class="vertical_post">
 					    <h3>Seguridad</h3>
 					    <form>
-						<span>Contraseña actual</span>
+						<span>Contraseï¿½a actual</span>
 						<input type="text" class="text" value="Nick" onfocus="this.value = '';" onblur="if (this.value == '') {
 	    this.value = 'Nick';
 	}">
-						<span>Nueva contraseña</span>
-						<input type="text" class="text" value="contraseña" onfocus="this.value = '';" onblur="if (this.value == '') {
-	    this.value = 'contraseña';
+						<span>Nueva contraseï¿½a</span>
+						<input type="text" class="text" value="contraseï¿½a" onfocus="this.value = '';" onblur="if (this.value == '') {
+	    this.value = 'contraseï¿½a';
 	}">
-						<span>Repita contraseña</span>
-						<input type="text" class="text" value="contraseña" onfocus="this.value = '';" onblur="if (this.value == '') {
-	    this.value = 'contraseña';
+						<span>Repita contraseï¿½a</span>
+						<input type="text" class="text" value="contraseï¿½a" onfocus="this.value = '';" onblur="if (this.value == '') {
+	    this.value = 'contraseï¿½a';
 	}">
 						<div class="rel_para"></div>
 						<div class="main grid">
@@ -195,62 +225,38 @@ $cantidadGrupo=mysql_num_rows($sqlGrupo);
                                         ?>
 					<h2 class="accordion-header">Datos <?php echo $nombreGrupo?></h2>
 					<div class="accordion-content" style="width: 244px; display: none;">
-					    <div class="rel_post_list">
+					    <?php
+                                            $stringOpciones="select * from ctt_opciones "
+                                                    . "where ctt_opciones.id_grupo=".$i."";
+                                            $sqlOpciones=mysql_query($stringOpciones) or die("Error linea 201: ".mysql_error());
+                                            $cantidadOpciones=mysql_num_rows($sqlOpciones); 
+                                            for($j=1; $j<=$cantidadOpciones; $j++)
+                                            {
+                                                    $campoOpciones=mysql_fetch_array($sqlOpciones);
+                                                    $desc_opcion=$campoOpciones['desc_opcion'];
+                                            ?>
+                                            <div class="rel_post_list">
 						<div class="rel_para">
-						    <span><a href="#">Opcion <?php echo $i?>.1</a></span>
+						    <span>
+                                                        <a href="#"><?php echo $desc_opcion?></a>
+                                                    </span>
 						</div>
 						<div class="rel__check">
 						    <a href="#">
-							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label>
+							<label class="checkbox"><input type="checkbox" name="chck<?php echo $i.$j?>" id="chck<?php echo $i.$j?>" onclick="marca_<?php echo $i.$j ?>()"><i> </i></label>
 						    </a>
-						</div>
+                                                </div><br><br>
+                                                <input type="text" class="text" name="texto_<?php echo $i.$j?>" id="texto_<?php echo $i.$j?>" value="<?php echo $desc_opcion?>" onfocus="this.value = '';" onblur="if (this.value == '') {
+	    this.value = '<?php echo $desc_opcion?>';
+	}" disabled>
 						<div class="clear"></div>
 					    </div>
 					    <div class="clear"></div>
-					    <div class="rel_post_list top">
-						<div class="rel_para">
-						    <span><a href="#">Opcion <?php echo $i?>.2</a></span>
-						</div>
-						<div class="rel__check">
-						    <a href="#">
-							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label>
-						    </a>
-						</div>
-						<div class="clear"></div>
-					    </div>
-					    <div class="rel_post_list top">
-						<div class="rel_para">
-						    <span><a href="#">Opcion <?php echo $i?>.3</a></span>
-						</div>
-						<div class="rel__check">
-						    <a href="#">
-							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label>
-						    </a>
-						</div>
-						<div class="clear"></div>
-					    </div>
-					    <div class="rel_post_list top">
-						<div class="rel_para">
-						    <span><a href="#">Opcion <?php echo $i?>.4</a></span>
-						</div>
-						<div class="rel__check">
-						    <a href="#">
-							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label>
-						    </a>
-						</div>
-						<div class="clear"></div>
-					    </div>
-					    <div class="rel_post_list top">
-						<div class="rel_para">
-						    <span><a href="#">Opcion <?php echo $i?>.5</a></span>
-						</div>
-						<div class="rel__check">
-						    <a href="#">
-							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label>
-						    </a>
-						</div>
-						<div class="clear"></div>
-					    </div>
+                                            <?php
+                                            }
+                                            ?>
+                                            <!-- BOTONES APARTE-->
+					    
 					    <div class="acord_btns">
 						<form>
 						    <input type="submit" value="Guardar">
