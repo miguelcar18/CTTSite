@@ -19,8 +19,8 @@ $link= $_SERVER['HTTP_HOST']
         .$_SERVER['REQUEST_URI'];
 
 $sistema=$_SERVER['REQUEST_URI'];
-$variable1=str_replace('/cttsite/val_correo.php/','',$sistema);
-$variable=str_replace('/cttsite/val_correo.php/','',$variable1);
+$variable1=str_replace('/xcttsite/val_correo.php/','',$sistema);
+$variable=str_replace('/xcttsite/val_correo.php/','',$variable1);
 
 $string="select * from usuario where hash='".$variable."'";
 $sql=mysql_query($string) or die ('Error: '.mysql_error());
