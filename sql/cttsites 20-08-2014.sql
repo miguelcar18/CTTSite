@@ -1,0 +1,175 @@
+CREATE DATABASE  IF NOT EXISTS `cttsite` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `cttsite`;
+-- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
+--
+-- Host: 127.0.0.1    Database: cttsite
+-- ------------------------------------------------------
+-- Server version	5.6.11
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ctt_grupos_opciones`
+--
+
+DROP TABLE IF EXISTS `ctt_grupos_opciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ctt_grupos_opciones` (
+  `id_grupo` int(11) NOT NULL AUTO_INCREMENT,
+  `desc_grupo` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_grupo`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ctt_grupos_opciones`
+--
+
+LOCK TABLES `ctt_grupos_opciones` WRITE;
+/*!40000 ALTER TABLE `ctt_grupos_opciones` DISABLE KEYS */;
+INSERT INTO `ctt_grupos_opciones` VALUES (1,'Personal'),(2,'Laboral'),(3,'Educativo'),(4,'Social'),(5,'Económico'),(6,'Otro');
+/*!40000 ALTER TABLE `ctt_grupos_opciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ctt_opciones`
+--
+
+DROP TABLE IF EXISTS `ctt_opciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ctt_opciones` (
+  `idctt_opciones` int(11) NOT NULL AUTO_INCREMENT,
+  `id_grupo` int(11) NOT NULL,
+  `id_opcion` int(11) DEFAULT NULL,
+  `desc_opcion` varchar(45) DEFAULT NULL,
+  `data_type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idctt_opciones`),
+  KEY `fk_ctt_opciones_ctt_grupos_opciones_idx` (`id_grupo`),
+  CONSTRAINT `fk_ctt_opciones_ctt_grupos_opciones` FOREIGN KEY (`id_grupo`) REFERENCES `ctt_grupos_opciones` (`id_grupo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ctt_opciones`
+--
+
+LOCK TABLES `ctt_opciones` WRITE;
+/*!40000 ALTER TABLE `ctt_opciones` DISABLE KEYS */;
+INSERT INTO `ctt_opciones` VALUES (1,1,1,'Cedula','integer'),(2,1,2,'Nombre','string'),(3,1,3,'Apellido','string'),(4,1,4,'Edad','integer'),(5,1,5,'Sexo','string'),(6,1,6,'Lugar de Nacimiento','string'),(7,1,7,'Direccion','string'),(8,1,8,'Telefono','string'),(9,1,9,'Correo','string'),(10,2,1,'Titulo Educativo','string'),(11,2,2,'Desde','date'),(12,2,3,'Hasta','date'),(13,2,4,'Institucion','string'),(14,2,5,'Ciudad de la Institucion','string'),(15,3,1,'Empresa u Organizacion','string'),(16,3,2,'Direccion','string'),(17,3,3,'Telefono','string'),(18,3,4,'Funcion','string'),(19,3,5,'Cargo','string'),(20,3,6,'Sueldo','string'),(21,3,7,'Supervisor','string'),(22,4,1,'Tipo de vivienda','string'),(23,4,2,'Numero de habitantes','integer'),(24,4,3,'Tendencia de la vivienda','string'),(25,4,4,'Habitantes menores de edad','integer'),(26,4,5,'Habitantes con discapacidad','integer'),(27,4,6,'Posee conexion a internet','string'),(28,5,1,'Ingreso bruto','double'),(29,5,2,'Ingreso familiar','double'),(30,5,3,'Posee beneficios educativos o gubernamentales','string'),(31,5,4,'Tipo de discapacidad del familiar (si posee)','string'),(32,6,1,'Habla ingles','string'),(33,6,2,'Conduce','string');
+/*!40000 ALTER TABLE `ctt_opciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ctt_usuarios_sesiones`
+--
+
+DROP TABLE IF EXISTS `ctt_usuarios_sesiones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ctt_usuarios_sesiones` (
+  `idctt_usuarios_sesiones` int(11) NOT NULL AUTO_INCREMENT,
+  `idusuario_sesion` int(11) DEFAULT NULL,
+  `idmaquina_sesion` int(11) DEFAULT NULL,
+  `idsesion_sesion` int(11) DEFAULT NULL,
+  `estado_sesion` varchar(45) DEFAULT NULL,
+  `tms_alta_sesion` varchar(45) DEFAULT NULL,
+  `so_sesion` varchar(45) DEFAULT NULL,
+  `navegador_sesion` varchar(45) DEFAULT NULL,
+  `fecha_sesion` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`idctt_usuarios_sesiones`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ctt_usuarios_sesiones`
+--
+
+LOCK TABLES `ctt_usuarios_sesiones` WRITE;
+/*!40000 ALTER TABLE `ctt_usuarios_sesiones` DISABLE KEYS */;
+INSERT INTO `ctt_usuarios_sesiones` VALUES (1,1,NULL,NULL,NULL,NULL,'Windows NT','Google Chrome','2014-08-14 20:23:14'),(2,1,NULL,NULL,NULL,NULL,'Windows NT','Google Chrome','2014-08-19 20:32:15'),(3,1,NULL,NULL,NULL,NULL,'Windows NT','Google Chrome','2014-08-19 23:19:37'),(4,1,NULL,NULL,NULL,NULL,'Windows NT','Google Chrome','2014-08-19 23:45:53'),(5,1,NULL,NULL,NULL,NULL,'Windows NT','Google Chrome','2014-08-20 03:05:09'),(6,1,NULL,NULL,NULL,NULL,'Windows NT','Google Chrome','2014-08-20 14:03:05'),(7,1,NULL,NULL,NULL,NULL,'Windows NT','Google Chrome','2014-08-20 18:36:48'),(8,1,NULL,NULL,NULL,NULL,'Windows NT','Google Chrome','2014-08-20 19:54:04'),(9,1,NULL,NULL,NULL,NULL,'Windows NT','Google Chrome','2014-08-21 00:42:09'),(10,1,NULL,NULL,NULL,NULL,'Windows NT','Google Chrome','2014-08-21 01:19:16');
+/*!40000 ALTER TABLE `ctt_usuarios_sesiones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cttoptions`
+--
+
+DROP TABLE IF EXISTS `cttoptions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cttoptions` (
+  `idcttOptions` int(11) NOT NULL AUTO_INCREMENT,
+  `idGrupo` int(11) DEFAULT NULL,
+  `idOpcion` int(11) DEFAULT NULL,
+  `value` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `usuario_idusuario` int(11) NOT NULL,
+  PRIMARY KEY (`idcttOptions`),
+  KEY `fk_cttOptions_usuario1_idx` (`usuario_idusuario`),
+  CONSTRAINT `fk_cttOptions_usuario1` FOREIGN KEY (`usuario_idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cttoptions`
+--
+
+LOCK TABLES `cttoptions` WRITE;
+/*!40000 ALTER TABLE `cttoptions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cttoptions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuario` (
+  `idusuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nick_usuario` varchar(45) NOT NULL,
+  `clave_usuario` varchar(45) NOT NULL,
+  `nombre_usuario` varchar(100) DEFAULT NULL,
+  `idioma_usuario` varchar(45) DEFAULT NULL,
+  `pais_usuario` varchar(45) DEFAULT NULL,
+  `email_usuario` varchar(45) DEFAULT NULL,
+  `enabled` int(11) NOT NULL,
+  `hash` varchar(45) NOT NULL,
+  `codigo_olvido` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idusuario`),
+  UNIQUE KEY `nick_usuario_UNIQUE` (`nick_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'miguelcar18','2ABPC15ObUSCs','Miguel  Carmona','Español','Venezuela','miguelcar18@gmail.com',1,'2AvKNjTGvSQ0I',NULL);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-08-20 22:30:20

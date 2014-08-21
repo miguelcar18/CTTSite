@@ -38,6 +38,22 @@
             {
                 fixelement(form.email_verificar, "Por favor, ingrese un correo electronico valido.");
             }
+			else if (form.codigo.value == "") 
+            {
+                fixelement(form.codigo, "Por favor, ingrese el codigo enviado.");
+            }
+			else if (form.password01.value == "") 
+            {
+                fixelement(form.password01, "Por favor, ingrese una contraseña.");
+            }
+			else if (form.password02.value == "") 
+            {
+                fixelement(form.password02, "Por favor, repita la contraseña.");
+            }
+			else if (form.password01.value != form.password02.value) 
+            {
+                fixelement(form.password02, "Las contraseñas deben de ser iguales.");
+            }
             
             else 
             {
@@ -50,12 +66,22 @@
 </head>
 
 <body>
-<form action="../operaciones/verificar_olvido.php" method="post" name="form" onSubmit = "return verifica(this)">
+<form action="../operaciones/verificar_olvido2.php" method="post" name="form" onSubmit = "return verifica(this)">
 <h3>Olvido de Contraseña</h3>
-<span>Por favor, ingrese el email con el cual hizo su registro: </span><br>
-<input name="email_verificar" type="text" />
+<p><span>Ingrese el email: </span><br />
+  <input name="email_verificar" type="text" />
+</p>
+<p><span>Ingrese el código de verificación: </span><br>
+  <input name="codigo" type="text" />
+</p>
+<p><span>Nueva contraseña: </span><br />
+  <input name="password01" type="text" />
+</p>
+<p><span>Repetir nueva contraseña: </span><br />
+  <input name="password02" type="text" />
 <br>
-<input name="ver_email" id="ver_email" type="submit" value="Enviar"/>
+  <input name="ver_email" id="ver_email" type="submit" value="Enviar"/>
+</p>
 </form>
 </body>
 </html>
