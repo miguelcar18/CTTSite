@@ -9,10 +9,6 @@
 		<script src="../js/alert.min_mensaje.js"></script>
     </head>
     <body>
-    <script>
-        var object2 = JSON.parse(localStorage.getItem('key'));
-        var id_u=object2.id_u;
-    </script>
     <?php
         include("funciones_mysql.php");
         conectar();
@@ -42,11 +38,18 @@
         ?>
        <script>
             $(document).ready(function(){
-            $.alert.open('MENSAJE','Datos ingresados correctamente.');
+			$.alert.open({
+			title: 'MENSAJE',
+			icon: 'info',
+			content: 'Datos ingresados correctamente.',
+			callback: function() {
+				location.href = "../PagPersonal.php";
+			}
+		});
             });
         </script>
         <?php
-        pasar("../PagPersonal.html");
+        //pasar("../PagPersonal.php");
     ?>
     </body>
 </html>

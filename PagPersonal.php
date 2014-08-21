@@ -31,6 +31,20 @@ $cantOpcJav=mysql_num_rows($sqlOpcJav);
         <script src="js/vallenato.js" type="text/javascript" charset="utf-8"></script>
         <link rel="stylesheet" href="css/vallenato.css" type="text/css" media="screen" charset="utf-8">
         <!----start-accordinatio-files--->	
+        
+        <script>
+            //alert(localStorage.length);
+            var object2 = JSON.parse(localStorage.getItem('key'));
+            // Mostrar variabes localstorage
+            /*alert(object2.nick_u);
+            alert(object2.clave_u);
+            alert(object2.nombre_u);
+            alert(object2.id_u);*/
+			$(document).ready(function() {
+				$('#hiddenid').val(object2.id_u);
+            });
+        </script>
+        
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#horizontalTab').easyResponsiveTabs({
@@ -64,11 +78,11 @@ $cantOpcJav=mysql_num_rows($sqlOpcJav);
 	<script src="js/site.js"></script>
 	<!----End Calender -------->
         <script type="text/javascript">
-            $(document).ready(function() {
+            /*$(document).ready(function() {
                 var object2 = JSON.parse(localStorage.getItem('key'));
                 $("#titulo").empty();
-                $("#titulo").html(object2.nombre_u+' '+object2.apellido_u);
-            });   
+                $("#titulo").html(object2.nombre_u);
+            });*/  
         </script>
         <script language ="Javascript">
 
@@ -84,12 +98,12 @@ $cantOpcJav=mysql_num_rows($sqlOpcJav);
 		
 		function marca_<?php echo $nmarca ?>(){
 		if(document.getElementById("chck<?php echo $nmarca ?>").checked){
-		document.getElementById("texto_<?php echo $nmarca ?>").disabled=false
+		document.getElementById("texto_<?php echo $nmarca ?>").disabled=false;
 		//document.getElementById("texto_<?php echo $nmarca ?>").style.backgroundColor='#FFFFFF'
-		document.getElementById("texto_<?php echo $nmarca ?>").focus()
+		document.getElementById("texto_<?php echo $nmarca ?>").focus();
 		}
 		else{
-		document.getElementById("texto_<?php echo $nmarca ?>").disabled=true
+		document.getElementById("texto_<?php echo $nmarca ?>").disabled=true;
 		//document.getElementById("texto_<?php //echo $nmarca ?>").value="<?php //echo $descOpcion ?>";
 		//document.getElementById("texto_<?php //echo $nmarca ?>").style.backgroundColor='#D6D3CE'
 		}
@@ -100,15 +114,6 @@ $cantOpcJav=mysql_num_rows($sqlOpcJav);
 </script>
     </head>
     <body>
-        <script>
-            /*alert(localStorage.length);
-            var object2 = JSON.parse(localStorage.getItem('key'));
-            // Mostrar variabes localstorage
-            alert(object2.nick_u);
-            alert(object2.clave_u);
-            alert(object2.nombre_u);
-            alert(object2.apellido_u);*/
-        </script>
 	<!--Menu-->
 	<div class="span1_of_list"><!-- start span1_of_list -->
 	    <ul class="social_list">
@@ -227,6 +232,7 @@ $cantOpcJav=mysql_num_rows($sqlOpcJav);
 				    </div>
 				    <div class="new_posts">
                                         <form name="form_grupos" id="form_grupos" method="get" action="conexion/grupo_datos.php">
+                                        <!--<input name="hiddenid" id="hiddenid" type="hidden" value="">-->
                                         <?php
                                         for ($i=1; $i<= $cantidadGrupo; $i++)
                                         {
