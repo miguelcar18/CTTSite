@@ -6,7 +6,7 @@ $stringGrupo="select * from ctt_grupos_opciones order by id_grupo asc";
 $sqlGrupo=mysql_query($stringGrupo) or die ("Error linea 7: ".mysql_error());
 $cantidadGrupo=mysql_num_rows($sqlGrupo);
 
-$stringOpcJav="select id_grupo, id_opcion from ctt_opciones order by id_grupo asc";
+$stringOpcJav="select id_grupo, id_opcion, desc_opcion from ctt_opciones order by id_grupo asc";
 $sqlOpcJav=mysql_query($stringOpcJav) or die("Error linea 10: ".mysql_error());
 $cantOpcJav=mysql_num_rows($sqlOpcJav);
 ?>
@@ -17,6 +17,13 @@ $cantOpcJav=mysql_num_rows($sqlOpcJav);
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Monda:400,700' rel='stylesheet' type='text/css'>
+        
+        <link href="css/alert.min_mensaje.css" rel="stylesheet"/>
+        <link href="css/theme.min_mensaje.css" rel="stylesheet"/>
+        <script src="js/jquery_mensaje.js"></script>
+        <script src="js/jquery-ui_mensaje.js"></script>
+        <script src="js/alert.min_mensaje.js"></script>
+        
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
         <script src="js/jquery.min.js"></script>
         <script src="js/easyResponsiveTabs.js"></script>
@@ -71,7 +78,8 @@ $cantOpcJav=mysql_num_rows($sqlOpcJav);
 			$campoOpcJav=mysql_fetch_array($sqlOpcJav);
 			$idGrupo=$campoOpcJav['id_grupo'];
 			$idOpcion=$campoOpcJav['id_opcion'];
-			$nmarca=$idGrupo.$idOpcion;
+			$descOpcion=$campoOpcJav['desc_opcion'];
+			$nmarca=$idGrupo."_".$idOpcion;
 		?>
 		
 		function marca_<?php echo $nmarca ?>(){
@@ -82,7 +90,8 @@ $cantOpcJav=mysql_num_rows($sqlOpcJav);
 		}
 		else{
 		document.getElementById("texto_<?php echo $nmarca ?>").disabled=true
-		//document.getElementById("texto_<?php echo $nmarca ?>").style.backgroundColor='#D6D3CE'
+		//document.getElementById("texto_<?php //echo $nmarca ?>").value="<?php //echo $descOpcion ?>";
+		//document.getElementById("texto_<?php //echo $nmarca ?>").style.backgroundColor='#D6D3CE'
 		}
 		}
 		<?php
@@ -217,6 +226,7 @@ $cantOpcJav=mysql_num_rows($sqlOpcJav);
 					</div>
 				    </div>
 				    <div class="new_posts">
+                                        <form name="form_grupos" id="form_grupos" method="get" action="conexion/grupo_datos.php">
                                         <?php
                                         for ($i=1; $i<= $cantidadGrupo; $i++)
                                         {
@@ -243,12 +253,10 @@ $cantOpcJav=mysql_num_rows($sqlOpcJav);
 						</div>
 						<div class="rel__check">
 						    <a href="#">
-							<label class="checkbox"><input type="checkbox" name="chck<?php echo $i.$j?>" id="chck<?php echo $i.$j?>" onclick="marca_<?php echo $i.$j ?>()"><i> </i></label>
+							<label class="checkbox"><input type="checkbox" name="chck<?php echo $i."_".$j?>" id="chck<?php echo $i."_".$j?>" onclick="marca_<?php echo $i."_".$j ?>()"><i> </i></label>
 						    </a>
                                                 </div><br><br>
-                                                <input type="text" class="text" name="texto_<?php echo $i.$j?>" id="texto_<?php echo $i.$j?>" value="<?php echo $desc_opcion?>" onfocus="this.value = '';" onblur="if (this.value == '') {
-	    this.value = '<?php echo $desc_opcion?>';
-	}" disabled>
+                                                <input type="text" class="text" name="texto_<?php echo $i."_".$j?>" id="texto_<?php echo $i."_".$j?>" value="" disabled>
 						<div class="clear"></div>
 					    </div>
 					    <div class="clear"></div>
@@ -256,18 +264,17 @@ $cantOpcJav=mysql_num_rows($sqlOpcJav);
                                             }
                                             ?>
                                             <!-- BOTONES APARTE-->
-					    
-					    <div class="acord_btns">
-						<form>
-						    <input type="submit" value="Guardar">
-						    <input type="reset" value="borrar">
-						    <div class="clear"></div>
-						</form>	
-					    </div>							
 					</div>
                                         <?php
                                         }
                                         ?>
+                                        <div class="acord_btns">
+						
+						    <input type="submit" value="Guardar">
+						    <input type="reset" value="borrar">
+						    <div class="clear"></div>
+					    </div>
+                                        </form>
 					    </div><!-- Limite -->
 				    </div>
 				</div>	  

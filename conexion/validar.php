@@ -67,7 +67,10 @@
                              ?>
                             <script>
                                 // Creamos un objeto
-                                var object = { 'nick_u' : '<?php echo $nick_usuario?>', 'clave_u' : '<?php echo $clave_usuario?>', 'nombre_u' : '<?php echo $nombre_usuario?>'};
+                                var object = { 'nick_u' : '<?php echo $nick_usuario?>', 
+                                    'clave_u' : '<?php echo $clave_usuario?>', 
+                                    'nombre_u' : '<?php echo $nombre_usuario?>',
+                                    'id_u' : '<?php echo $id_usuario?>'};
                                 // Lo guardamos en localStorage pasandolo a cadena con JSON
                                 localStorage.setItem('key', JSON.stringify(object));
                             </script>
