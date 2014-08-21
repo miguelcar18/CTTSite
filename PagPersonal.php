@@ -116,188 +116,176 @@ $cantOpcJav=mysql_num_rows($sqlOpcJav);
     <body>
 	<!--Menu-->
 	<div class="span1_of_list"><!-- start span1_of_list -->
-	    <ul class="social_list">
-		<li><a href="#"><i class="icon_1"></i></a></li>
-		<li><a href="#"><i class="icon_2"></i></a></li>
-		<li><a href="#"><i class="icon_3"></i></a></li>
+		<ul class="social_list">
+			<li><a href="#"><i class="icon_1"></i></a></li>
+			<li><a href="#"><i class="icon_2"></i></a></li>
+			<li><a href="#"><i class="icon_3"></i></a></li>
+			<div class="clear"></div>
+		</ul>
+		<div class="search">
+			<form>
+				<input type="text" value="">
+				<input type="submit" value="">
+			</form>
+		</div>
 		<div class="clear"></div>
-	    </ul>
-	    <div class="search">
-		<form>
-		    <input type="text" value="">
-		    <input type="submit" value="">
-		</form>
-	    </div>
-	    <div class="clear"></div>
 	</div>
 	<div class="wrap">
-	    <div class="wrap-col">		
-		<div class="wrap">
-		    <div class="span_of_3"><!-- start span_of_3 -->
-			<div class="span1_of_3"><!-- start span1_of_3 -->
-			    <div id="verticalTab"><!-- start vertical Tabs-->
-				<ul class="resp-tabs-list">
-				    <li><i class="icon_1"></i></li>
-				    <li><i class="icon_4"></i></li>
-				    <li><i class="icon_3"></i></li>
-				</ul>
-				<div class="resp-tabs-container">
-				    <div class="new_posts">
-					<div class="main grid">
-					    <div class="col-1-2">
-						<div class="wrap-col">
-						    <h3 id="titulo">Titulo</h3>
-						</div>
-					    </div>
-					    <div class="col-1-2">
-						<div class="wrap-col">
-						    <!-- este punto puede cambiar el RESPONSIVE. -->  			
-						    <div class="marco"> 
-							<img src="images/silueta.gif" width="100" height="115" alt=""> 
-						    </div>
-						</div>
-					    </div>
-					</div>
-					<!-- fin  punto -->  
-					<div class="vertical_post">
-					    <form>
-						<span>Nombre ususario o nick</span>
-						<input type="text" class="text" value="Nick" onfocus="this.value = '';" onblur="if (this.value == '') {
-	    this.value = 'Nick';
-	}">
-						<span>eMail</span>
-						<input type="text" class="text" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
-	    this.value = 'contrase�a';
-	}">
-						<span>Idioma preferido</span>			
-						<select name=idioma class="combo" >
-						    <option name=one value=uno> uno </option>
-						    <option name=two value=dos> dos </option>
-						    <option name=three value=tres selected> tres </option>
-						    <option name=four value=cuatro> cuatro </option>
-						</select>
-						<span>Pais</span>
-						<select name=idioma class="combo" >
-						    <option name=one value=uno selected> uno </option>
-						    <option name=two value=dos> dos </option>
-						    <option name=three value=tres > tres </option>
-						    <option name=four value=cuatro> cuatro </option>
-						</select>
-						<div class="main grid">
-						    <div class="col-1-2">
-							<div class="wrap-col">
-							    <input type="reset" value="Atras"/>  					    
+		<div class="wrap-col">		
+			<div class="wrap">
+				<div class="span_of_3"><!-- start span_of_3 -->
+					<div class="span1_of_3"><!-- start span1_of_3 -->
+						<div id="verticalTab"><!-- start vertical Tabs-->
+							<ul class="resp-tabs-list">
+								<li><i class="icon_1"></i></li>
+								<li><i class="icon_4"></i></li>
+								<li><i class="icon_3"></i></li>
+							</ul>
+							<div class="resp-tabs-container">
+								<div class="new_posts">
+									<div class="main grid">
+										<div class="col-1-2">
+											<div class="wrap-col">
+												<h3 id="titulo">Titulo</h3>
+											</div>
+										</div>
+										<div class="col-1-2">
+											<div class="wrap-col">
+												<!-- este punto puede cambiar el RESPONSIVE. -->  			
+												<div class="marco"> 
+													<img src="images/silueta.gif" width="100" height="115" alt=""> 
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- fin  punto -->  
+									<div class="vertical_post">
+										<form>
+											<span>Nombre ususario o nick</span>
+											<input type="text" class="text" value="Nick" onfocus="this.value = '';" onblur="if (this.value == '') {
+											this.value = 'Nick';
+										}">
+										<span>eMail</span>
+										<input type="text" class="text" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
+										this.value = 'contrase�a';
+									}">
+									<span>Idioma preferido</span>			
+									<select name=idioma class="combo" >
+										<option name=one value=uno> uno </option>
+										<option name=two value=dos> dos </option>
+										<option name=three value=tres selected> tres </option>
+										<option name=four value=cuatro> cuatro </option>
+									</select>
+									<span>Pais</span>
+									<select name=idioma class="combo" >
+										<option name=one value=uno selected> uno </option>
+										<option name=two value=dos> dos </option>
+										<option name=three value=tres > tres </option>
+										<option name=four value=cuatro> cuatro </option>
+									</select>
+									<div class="main grid">
+										<div class="col-1-2">
+											<div class="wrap-col">
+												<input type="reset" value="Atras"/>  					    
+											</div>
+										</div>
+										<div class="col-1-2">
+											<div class="wrap-col">
+												<input type="submit" value="Acepta"/>
+											</div>
+										</div>	
+									</div>
+								</form>
 							</div>
-						    </div>
-						    <div class="col-1-2">
-							<div class="wrap-col">
-							    <input type="submit" value="Acepta"/>
-							</div>
-						    </div>	
 						</div>
-                                            </form>
-					</div>
-				    </div>
-				    <div class="new_posts">
-					<div class="vertical_post">
-					    <h3>Seguridad</h3>
-					    <form>
-						<span>Contrase�a actual</span>
-						<input type="text" class="text" value="Nick" onfocus="this.value = '';" onblur="if (this.value == '') {
-	    this.value = 'Nick';
-	}">
-						<span>Nueva contrase�a</span>
-						<input type="text" class="text" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
-	    this.value = 'contrase�a';
-	}">
-						<span>Repita contrase�a</span>
-						<input type="text" class="text" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
-	    this.value = 'contrase�a';
-	}">
+						<div class="new_posts">
+							<div class="vertical_post">
+								<h3>Seguridad</h3>
+								<form>
+									<span>Contrase&ntilde;a actual</span>
+									<input type="text" class="text" value="Nick" onfocus="this.value = '';" onblur="if (this.value == '') {
+									this.value = 'Nick';
+								}">
+								<span>Nueva contrase&ntilde;a</span>
+								<input type="text" class="text" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
+								this.value = 'contrase�a';
+							}">
+							<span>Repita contrase&ntilde;a</span>
+							<input type="text" class="text" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
+							this.value = 'contrase�a';
+						}">
 						<div class="rel_para"></div>
 						<div class="main grid">
-						    <div class="col-1-2">
-							<div class="wrap-col">
-							    <input type="reset" value="Atras"/>  					    
+							<div class="col-1-2">
+								<div class="wrap-col">
+									<input type="reset" value="Atras"/>  					    
+								</div>
 							</div>
-						    </div>
-						    <div class="col-1-2">
-							<div class="wrap-col">
-							    <input type="submit" value="Acepta"/>	 
-							</div>
-						    </div>	
+							<div class="col-1-2">
+								<div class="wrap-col">
+									<input type="submit" value="Acepta"/>	 
+								</div>
+							</div>	
 						</div>	
-					    </form>							
-					</div>
-				    </div>
-				    <div class="new_posts">
-                                        <form name="form_grupos" id="form_grupos" method="get" action="conexion/grupo_datos.php">
-                                        <!--<input name="hiddenid" id="hiddenid" type="hidden" value="">-->
-                                        <?php
-                                        for ($i=1; $i<= $cantidadGrupo; $i++)
-                                        {
-                                            $campoGrupo=mysql_fetch_array($sqlGrupo);
-                                            $nombreGrupo=$campoGrupo['desc_grupo'];
-                                        ?>
-					<h2 class="accordion-header">Datos <?php echo $nombreGrupo?></h2>
-					<div class="accordion-content" style="width: 244px; display: none;">
-					    <?php
-                                            $stringOpciones="select * from ctt_opciones "
-                                                    . "where ctt_opciones.id_grupo=".$i."";
-                                            $sqlOpciones=mysql_query($stringOpciones) or die("Error linea 201: ".mysql_error());
-                                            $cantidadOpciones=mysql_num_rows($sqlOpciones); 
-                                            for($j=1; $j<=$cantidadOpciones; $j++)
-                                            {
-                                                    $campoOpciones=mysql_fetch_array($sqlOpciones);
-                                                    $desc_opcion=$campoOpciones['desc_opcion'];
-                                            ?>
-                                            <div class="rel_post_list">
-						<div class="rel_para">
-						    <span>
-                                                        <a href="#"><?php echo $desc_opcion?></a>
-                                                    </span>
-						</div>
-						<div class="rel__check">
-						    <a href="#">
-							<label class="checkbox"><input type="checkbox" name="chck<?php echo $i."_".$j?>" id="chck<?php echo $i."_".$j?>" onclick="marca_<?php echo $i."_".$j ?>()"><i> </i></label>
-						    </a>
-                                                </div><br><br>
-                                                <input type="text" class="text" name="texto_<?php echo $i."_".$j?>" id="texto_<?php echo $i."_".$j?>" value="" disabled>
-						<div class="clear"></div>
-					    </div>
-					    <div class="clear"></div>
-                                            <?php
-                                            }
-                                            ?>
-                                            <!-- BOTONES APARTE-->
-					</div>
-                                        <?php
-                                        }
-                                        ?>
-                                        <div class="acord_btns">
-						
-						    <input type="submit" value="Guardar">
-						    <input type="reset" value="borrar">
-						    <div class="clear"></div>
-					    </div>
-                                        </form>
-					    </div><!-- Limite -->
-				    </div>
-				</div>	  
-			    </div>
+					</form>							
+				</div>
 			</div>
-			<div class="clear"></div>
-		    </div>
-		</div>		
+			<div class="new_posts">
+				<form name="form_grupos" id="form_grupos" method="get" action="conexion/grupo_datos.php">
+					<!--<input name="hiddenid" id="hiddenid" type="hidden" value="">-->
+					<?php
+					for ($i=1; $i<= $cantidadGrupo; $i++)
+					{
+						$campoGrupo=mysql_fetch_array($sqlGrupo);
+						$nombreGrupo=$campoGrupo['desc_grupo'];
+						?>
+						<h2 class="accordion-header">Datos <?php echo $nombreGrupo?></h2>
+						<div class="accordion-content" style="width: 244px; display: none;">
+							<?php
+							$stringOpciones="select * from ctt_opciones "
+							. "where ctt_opciones.id_grupo=".$i."";
+							$sqlOpciones=mysql_query($stringOpciones) or die("Error linea 201: ".mysql_error());
+							$cantidadOpciones=mysql_num_rows($sqlOpciones); 
+							for($j=1; $j<=$cantidadOpciones; $j++)
+							{
+								$campoOpciones=mysql_fetch_array($sqlOpciones);
+								$desc_opcion=$campoOpciones['desc_opcion'];
+								?>
+								<div class="rel_post_list">
+									<div class="rel__check" style="float:left;width:100%">
+                                        <div style="float:left;width:10%">
+										<input type="checkbox" name="chck<?php echo $i."_".$j?>" id="chck<?php echo $i."_".$j?>" onclick="marca_<?php echo $i."_".$j ?>()">
+										</div>
+										<div style="float:left;width:30%">
+										 <i><?php echo $desc_opcion?> </i>
+										</div>
+										<div style="float:left;width:60%">
+										<input type="text" class="text" name="texto_<?php echo $i."_".$j?>" id="texto_<?php echo $i."_".$j?>" value="" disabled>
+									    </div> 
+									</div>
 
-		<div class="span2_of_3 left">
 
+									<div class="clear"></div>
+								</div>
+								<div class="clear"></div>
+								<?php
+							}
+							?>
+							<!-- BOTONES APARTE-->
+						</div>
+						<?php
+					}
+					?>
+					<div class="acord_btns">
+
+						<input type="submit" value="Guardar">
+						<input type="reset" value="borrar">
+						<div class="clear"></div>
+					</div>
+				</form>
+			</div><!-- Limite -->
 		</div>
-		<div class="span3_of_3 left">			
-		</div>			
+	</div>	  
 
-
-	    </div>
-	</div>
     </body>
 </html>
