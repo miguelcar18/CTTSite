@@ -37,7 +37,7 @@ CREATE TABLE `ctt_grupos_opciones` (
 
 LOCK TABLES `ctt_grupos_opciones` WRITE;
 /*!40000 ALTER TABLE `ctt_grupos_opciones` DISABLE KEYS */;
-INSERT INTO `ctt_grupos_opciones` VALUES (1,'Personal'),(3,'Laboral');
+INSERT INTO `ctt_grupos_opciones` VALUES (1,'Personal'),(2,'Laboral');
 /*!40000 ALTER TABLE `ctt_grupos_opciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +66,7 @@ CREATE TABLE `ctt_opciones` (
 
 LOCK TABLES `ctt_opciones` WRITE;
 /*!40000 ALTER TABLE `ctt_opciones` DISABLE KEYS */;
-INSERT INTO `ctt_opciones` VALUES (1,1,1,'DNI','integer'),(2,1,2,'Nombre','string'),(3,1,3,'Apellido','string'),(17,3,3,'Telefono','string'),(19,3,5,'Cargo','string'),(20,3,6,'Sueldo','string');
+INSERT INTO `ctt_opciones` VALUES (1,1,1,'DNI','integer'),(2,1,2,'Nombre','string'),(3,1,3,'Apellido','string'),(17,2,3,'Telefono','string'),(19,2,5,'Cargo','string'),(20,2,6,'Sueldo','string');
 /*!40000 ALTER TABLE `ctt_opciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
