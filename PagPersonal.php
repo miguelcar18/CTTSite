@@ -117,10 +117,12 @@
         <script language ="Javascript">
             function leer()
             {
+				var object2 = JSON.parse(localStorage.getItem('key'));
             $(function()
             {
                 $("#btn-enviar").click(function(){
                     var uurl="conexion/grupo_datos.php";
+					$('#hiddenid').val(object2.id_u);
                     $.ajax(
                         {
                             type:"POST",
@@ -253,7 +255,7 @@
                                     </div>
                                     <div class="new_posts">
                                         <form name="form_grupos" id="form_grupos" method="post" action="conexion/grupo_datos.php">
-					<!--<input name="hiddenid" id="hiddenid" type="hidden" value="">-->
+					<input name="hiddenid" id="hiddenid" type="hidden" value="">
 					<?php
                                             for ($i=1; $i<= $cantidadGrupo; $i++)
                                             {

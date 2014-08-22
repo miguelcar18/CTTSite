@@ -10,7 +10,7 @@
         foreach($_POST as $nombre_campo => $valor){ 
         $asignacion = "\$" . $nombre_campo . "='" . $valor . "';";
         eval($asignacion);
-        if($valor != 'on')
+        if($valor != 'on' and $nombre_campo != 'hiddenid')
         {
             $verGrupoOpcion=str_replace('texto_','',$nombre_campo);
             //$separar=explode('_',$verGrupoOpcion);
@@ -21,7 +21,7 @@
                 . "values "
                 . "('".$verGrupoOpcion."',"
                 . "'".$valor."',"
-                . "'1')";
+                . "'".$_POST['hiddenid']."')";
         $sqlingreso=mysql_query($stringingreso) or die ("Error al ingresar los datos".mysql_error());
         }
         
