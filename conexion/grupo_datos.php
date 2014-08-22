@@ -33,8 +33,8 @@
 				$sqlingreso=mysql_query($stringingreso) or die ("Error al ingresar los datos".mysql_error());
 				?>
 				<script>
-					var opcionesls = { '<?php echo $verGrupoOpcion?>' : '<?php echo $valor?>'};
-					localStorage.setItem('<?php echo $verGrupoOpcion?>', JSON.stringify(opcionesls));
+					var opcionesls = { 'data<?php echo $verGrupoOpcion?>' : '<?php echo $valor?>'};
+					localStorage.setItem('ls<?php echo $verGrupoOpcion?>', JSON.stringify(opcionesls));
 					var obtenerls = JSON.parse(localStorage.getItem('<?php echo $verGrupoOpcion?>'));
 				</script>
                 <?php
@@ -47,9 +47,9 @@
 				$sqlupdate=mysql_query($stringupdate) or die ("Error al actualizar los datos: ".mysql_error());
 				?>
 				<script>
-					localStorage.removeItem('<?php echo $verGrupoOpcion?>');
-					var opcionesls = { '<?php echo $verGrupoOpcion?>' : '<?php echo $valor?>'};
-					localStorage.setItem('<?php echo $verGrupoOpcion?>', JSON.stringify(opcionesls));
+					localStorage.removeItem('ls<?php echo $verGrupoOpcion?>');
+					var opcionesls = { 'data<?php echo $verGrupoOpcion?>' : '<?php echo $valor?>'};
+					localStorage.setItem('ls<?php echo $verGrupoOpcion?>', JSON.stringify(opcionesls));
 					var obtenerls = JSON.parse(localStorage.getItem('<?php echo $verGrupoOpcion?>'));
 				</script>
                 <?php

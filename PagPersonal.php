@@ -8,7 +8,9 @@
 
     $stringOpcJav="select idctt_opciones, desc_opcion from ctt_opciones order by id_grupo asc";
     $sqlOpcJav=mysql_query($stringOpcJav) or die("Error linea 10: ".mysql_error());
+	$sqlOpcJav2=mysql_query($stringOpcJav) or die("Error linea 11: ".mysql_error());
     $cantOpcJav=mysql_num_rows($sqlOpcJav);
+	$cantOpcJav2=mysql_num_rows($sqlOpcJav2);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -91,6 +93,21 @@
 						return false;
 					});
             	});
+				<?php  
+		for ($aa=1; $aa<=$cantOpcJav2; $aa++)
+		{
+			$campoOpcJavb=mysql_fetch_array($sqlOpcJav2);
+			$idGrupo2=$campoOpcJavb['idctt_opciones'];
+			$descOpcion2=$campoOpcJavb['desc_opcion'];
+			$nmarca2=$idGrupo2;
+		?>
+		var object1 = JSON.parse(localStorage.getItem('ls<?php echo $nmarca2 ?>'));
+		var data0101=object1.data<?php echo $nmarca2 ?>;
+				$('#texto_<?php echo $nmarca2 ?>').val(data0101);
+			<?php
+		}
+			?>
+				
 	    });
 	</script>
 	<!----Calender -------->
@@ -112,15 +129,13 @@
 		?>
 		
 		function marca_<?php echo $nmarca ?>(){
+		
 		if(document.getElementById("chck<?php echo $nmarca ?>").checked){
 		document.getElementById("texto_<?php echo $nmarca ?>").disabled=false;
-		//document.getElementById("texto_<?php echo $nmarca ?>").style.backgroundColor='#FFFFFF'
 		document.getElementById("texto_<?php echo $nmarca ?>").focus();
 		}
 		else{
 		document.getElementById("texto_<?php echo $nmarca ?>").disabled=true;
-		//document.getElementById("texto_<?php //echo $nmarca ?>").value="<?php //echo $descOpcion ?>";
-		//document.getElementById("texto_<?php //echo $nmarca ?>").style.backgroundColor='#D6D3CE'
 		}
 		}
 		<?php

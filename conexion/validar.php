@@ -64,6 +64,9 @@
                                     . "'".$id_usuario."', '".php_uname('s')."', '".$navegador."', now()"
                                     . ")";
                             $sqlrsesion=mysql_query($stringrsesion) or die ("Error en la linea 63: ".mysql_error());
+							$stringcaja="select * from ctt_options_values where usuario_idusuario='".$id_usuario."'";
+							$sqlcaja=mysql_query($stringcaja) or die ("Error: ".mysql_error());
+							$cantidadcaja=mysql_num_rows($sqlcaja);
                              ?>
                             <script>
                                 // Creamos un objeto
@@ -73,6 +76,16 @@
                                     'id_u' : '<?php echo $id_usuario?>'};
                                 // Lo guardamos en localStorage pasandolo a cadena con JSON
                                 localStorage.setItem('key', JSON.stringify(object));
+								<?php
+								for($aaa=1; $aaa<=$cantidadcaja; $aaa++)
+								{
+									$campocaja=mysql_fetch_array($sqlcaja);
+								?>
+								var opciones = { 'data<?php echo $campocaja['idOpcion']?>' : '<?php echo $campocaja['value']?>'};
+								localStorage.setItem('ls<?php echo $campocaja['idOpcion']?>', JSON.stringify(opciones));
+								<?php
+								}
+								?>
                             </script>
                             <?php
                             pasar("../PagPersonal.php");
