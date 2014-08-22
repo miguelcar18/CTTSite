@@ -52,13 +52,6 @@ else
                 . "codigo_olvido='".$codigoVerificar."' "
                 . "where email_usuario= '".$_POST['email_verificar']."'";
     $sqlolvido=mysql_query($stringolvido) or die ("Error al actualizar los datos".mysql_error());
-        ?>
-       <script>
-            $(document).ready(function(){
-            $.alert.open('MENSAJE','Operacion realizada. Por favor revise su correo');
-            });
-        </script>
-        <?php
         $mensaje_correo="Por favor, ingrese el siguiente codigo en el siguiente link<br><br><br>"
                 . "<center>"
 				. "Codigo: ".$codigoVerificar.""
@@ -82,9 +75,21 @@ else
         $mail->MsgHTML($mensaje_correo);
         /*$mail->AddAttachment() Adjuntar archivo*/
         $mail->Send();
-
-        pasar("../index.html");
-	
+?>
+       <script>
+            $(document).ready(function(){
+                
+                $.alert.open({
+			title: 'MENSAJE',
+			icon: 'info',
+			content: 'Operacion realizada. Por favor revise su correo.',
+                        callback: function() {
+			location.href = "../index.html";
+			}
+		});
+            });
+        </script>
+        <?php
 }
 ?>
 </body>

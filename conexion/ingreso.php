@@ -29,14 +29,44 @@
                 . "'".$email1."',"
                 . "'0',"
                 . "'".crypt($nick1,"2A")."')";
+        
         $sqlingreso=mysql_query($stringingreso) or die ("Error al ingresar los datos".mysql_error());
-        ?>
-       <script>
-            $(document).ready(function(){
-            $.alert.open('MENSAJE','Datos ingresados correctamente. Por favor revise su correo');
-            });
-        </script>
-        <?php
+        
+        $stringIdUsuario="select idusuario from usuario "
+                . "where nick_usuario='".$nick1."'";
+        $sqlIdUsuario=mysql_query($stringIdUsuario) or die ("Error: ".mysql_error());
+        $campoIdUsuario=mysql_fetch_array($sqlIdUsuario);
+        
+        $stringOpcionValues="select idctt_opciones, desc_opcion, data_type "
+                . "from ctt_opciones "
+                . "where desc_opcion='Nombre' "
+                . "or "
+                . "desc_opcion='Apellido'";
+        
+        $sqlOpcionValues=mysql_query($stringOpcionValues) or die ("Error al ingresar los datos".mysql_error());
+        $cantidadOpcionValues=mysql_num_rows($sqlOpcionValues);
+        
+        for($na=1; $na<=$cantidadOpcionValues; $na++)
+        {
+            $campoOpcionValues=mysql_fetch_array($sqlOpcionValues);
+            $idna=$campoOpcionValues['idctt_opciones'];
+            $valuena=$campoOpcionValues['desc_opcion'];
+            if($valuena=='Nombre')
+            {
+                $valorna=$_POST['nombre'];
+            }
+            else if($valuena=='Apellido')
+            {
+                $valorna=$_POST['apellido'];
+            }
+            $typena=$campoOpcionValues['data_type'];
+            
+            $stringna="insert into ctt_options_values "
+                . "(idOpcion, value, type, usuario_idusuario) "
+                . "values "
+                . "('".$idna."', '".$valorna."', '".$typena."', '".$campoIdUsuario['idusuario']."')";
+            $sqlna=mysql_query($stringna) or die ("Error al ingresar los datos: ".mysql_error());
+        }
         $mensaje_correo="Por favor, valide su registro a traves del siguiente link <br><br><br>"
                 . "<center>"
                 . "<a href='".$_SERVER['HTTP_HOST']."/xcttsite/val_correo.php/".crypt($nick1,"2A")."' target='_blank'>"
@@ -59,8 +89,20 @@
         $mail->MsgHTML($mensaje_correo);
         /*$mail->AddAttachment() Adjuntar archivo*/
         $mail->Send();
-
-        pasar("../index.html");
-    ?>
+?>
+       <script>
+            $(document).ready(function(){
+            
+            $.alert.open({
+			title: 'MENSAJE',
+			icon: 'info',
+			content: 'Datos ingresados correctamente. Por favor revise su correo.',
+                        callback: function() {
+			location.href = "../index.html";
+			}
+		});
+            
+            });
+        </script>
     </body>
 </html>

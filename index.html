@@ -40,7 +40,16 @@
             var passed = false;
             var expRegEmail=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
             
-            if (form.nombre_usuario.value == "" || form.nombre_usuario.value == "user o username@gmail.com") 
+            if (form.nombre.value == "" || form.nombre.value == "nombre") 
+            {
+                fixelement(form.nombre, "Por favor, ingrese un nombre.");
+            }
+            else if (form.apellido.value == "" || form.apellido.value == "apellido") 
+            {
+                fixelement(form.apellido, "Por favor, ingrese un apellido.");
+            }
+        
+            else if (form.nombre_usuario.value == "" || form.nombre_usuario.value == "user o username@gmail.com") 
             {
                 fixelement(form.nombre_usuario, "Por favor, ingrese un nombre de usuario.");
             }
@@ -158,6 +167,10 @@
                         <h4>Registro</h4>
                         <div class="subscribe">
                             <form name="form02" id="form02" method="post" action="conexion/ingreso.php" onSubmit = "return verifica(this)">
+                                <input type="text" name="nombre" id="nombre" value="nombre" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'nombre';}">
+                                <span>Nombre</span>
+                                <input type="text" name="apellido" id="apellido" value="apellido" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'apellido';}">
+                                <span>Apellido</span>
                                 <input type="text" name="nombre_usuario" id="nombre_usuario" value="user o username@gmail.com" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'user o username@gmail.com';}">
                                 <span>Nombre  usuario o nick</span>
                                 <input type="text" name="email" id="email" value="username@gmail.com" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'username@gmail.com';}">
