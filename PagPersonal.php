@@ -6,7 +6,7 @@
     $sqlGrupo=mysql_query($stringGrupo) or die ("Error linea 7: ".mysql_error());
     $cantidadGrupo=mysql_num_rows($sqlGrupo);
 
-    $stringOpcJav="select id_grupo, id_opcion, desc_opcion from ctt_opciones order by id_grupo asc";
+    $stringOpcJav="select idctt_opciones, desc_opcion from ctt_opciones order by id_grupo asc";
     $sqlOpcJav=mysql_query($stringOpcJav) or die("Error linea 10: ".mysql_error());
     $cantOpcJav=mysql_num_rows($sqlOpcJav);
 ?>
@@ -20,6 +20,9 @@
         
         <link href="css/alert.min_mensaje.css" rel="stylesheet"/>
         <link href="css/theme.min_mensaje.css" rel="stylesheet"/>
+        
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        
         <script src="js/jquery_mensaje.js"></script>
         <script src="js/jquery-ui_mensaje.js"></script>
         <script src="js/alert.min_mensaje.js"></script>
@@ -90,10 +93,9 @@
 		for ($aaa=1; $aaa<=$cantOpcJav; $aaa++)
 		{
 			$campoOpcJav=mysql_fetch_array($sqlOpcJav);
-			$idGrupo=$campoOpcJav['id_grupo'];
-			$idOpcion=$campoOpcJav['id_opcion'];
+			$idGrupo=$campoOpcJav['idctt_opciones'];
 			$descOpcion=$campoOpcJav['desc_opcion'];
-			$nmarca=$idGrupo."_".$idOpcion;
+			$nmarca=$idGrupo;
 		?>
 		
 		function marca_<?php echo $nmarca ?>(){
@@ -111,6 +113,28 @@
 		<?php
 		}
 		?>
+        </script>
+        <script language ="Javascript">
+            function leer()
+            {
+            $(function()
+            {
+                $("#btn-enviar").click(function(){
+                    var uurl="conexion/grupo_datos.php";
+                    $.ajax(
+                        {
+                            type:"POST",
+                            url:uurl,
+                            data:$("#form_grupos").serialize(),
+                            success:function(data){
+                                $("#resultado").html(data);
+                            }
+                        }
+                    );
+                    return false;
+                });
+            });
+            }
         </script>
     </head>
     <body>
@@ -228,7 +252,7 @@
                                         </div>
                                     </div>
                                     <div class="new_posts">
-                                        <form name="form_grupos" id="form_grupos" method="get" action="conexion/grupo_datos.php">
+                                        <form name="form_grupos" id="form_grupos" method="post" action="conexion/grupo_datos.php">
 					<!--<input name="hiddenid" id="hiddenid" type="hidden" value="">-->
 					<?php
                                             for ($i=1; $i<= $cantidadGrupo; $i++)
@@ -247,17 +271,18 @@
 							{
                                                             $campoOpciones=mysql_fetch_array($sqlOpciones);
                                                             $desc_opcion=$campoOpciones['desc_opcion'];
+															$idctt_opciones=$campoOpciones['idctt_opciones'];
                                                     ?>
                                                             <div class="rel_post_list">
                                                                 <div class="rel__check" style="float:left;width:100%">
                                                                     <div style="float:left;width:10%">
-                                                                        <input type="checkbox" name="chck<?php echo $i."_".$j?>" id="chck<?php echo $i."_".$j?>" onclick="marca_<?php echo $i."_".$j ?>()">
+                                                                        <input type="checkbox" name="chck<?php echo $idctt_opciones?>" id="chck<?php echo $idctt_opciones?>" onclick="marca_<?php echo $idctt_opciones ?>()">
                                                                     </div>
                                                                     <div style="float:left;width:30%">
                                                                         <i><?php echo $desc_opcion?> </i>
                                                                     </div>
                                                                     <div style="float:left;width:60%">
-                                                                        <input type="text" class="text" name="texto_<?php echo $i."_".$j?>" id="texto_<?php echo $i."_".$j?>" value="" disabled>
+                                                                        <input type="text" class="text" name="texto_<?php echo $idctt_opciones?>" id="texto_<?php echo $idctt_opciones?>" value="" disabled>
                                                                     </div> 
                                                                 </div>
                                                                 <div class="clear"></div>
@@ -272,11 +297,13 @@
                                             }
                                                     ?>
                                             <div class="acord_btns">
-                                                <input type="submit" value="Guardar">
+                                            
+                                                <input type="button" value="Guardar" name="btn-enviar" id="btn-enviar" onclick="leer()">
 						<input type="reset" value="borrar">
 						<div class="clear"></div>
                                             </div>
                                         </form>
+                                        <div id="resultado"></div>
                                     </div><!-- Limite -->
                                 </div>
                             </div>	  
