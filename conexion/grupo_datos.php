@@ -58,10 +58,9 @@
             <script>
             $(document).ready(function(){
 				$("#chck"+<?php echo $verGrupoOpcion?>+"").prop("checked", false);
-				$("#chck"+<?php echo $verGrupoOpcion?>+"").prop("disabled", true);
+				$("#texto_"+<?php echo $verGrupoOpcion?>+"").attr("disabled", true);
 				//donde dice holaaaaa debe ir obtenerls.<?php //echo $verGrupoOpcion?>
-				//no se porque no me funciona el val de jquery
-				$("#text_"+<?php echo $verGrupoOpcion?>+"").val("holaaaaa");
+				$("#texto_"+<?php echo $verGrupoOpcion?>+"").val(""+obtenerls.<?php echo $verGrupoOpcion?>+"");
             });
         </script>
             <?php

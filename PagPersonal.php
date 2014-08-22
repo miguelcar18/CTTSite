@@ -16,12 +16,12 @@
         <title>CTT | Home :: Pag.Personal</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link href='http://fonts.googleapis.com/css?family=Monda:400,700' rel='stylesheet' type='text/css'>
+        <!--<link href='http://fonts.googleapis.com/css?family=Monda:400,700' rel='stylesheet' type='text/css'>-->
         
         <link href="css/alert.min_mensaje.css" rel="stylesheet"/>
         <link href="css/theme.min_mensaje.css" rel="stylesheet"/>
         
-        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <!--<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>-->
         
         <script src="js/jquery_mensaje.js"></script>
         <script src="js/jquery-ui_mensaje.js"></script>
@@ -71,6 +71,26 @@
 		    width: 'auto',
 		    fit: true
 		});
+		
+		var object2 = JSON.parse(localStorage.getItem('key'));
+				$(function()
+				{
+					$("#btn-enviar").click(function(){
+						var uurl="conexion/grupo_datos.php";
+						$('#hiddenid').val(object2.id_u);
+						$.ajax(
+							{
+								type:"POST",
+								url:uurl,
+								data:$("#form_grupos").serialize(),
+								success:function(data){
+									$("#resultado").html(data);
+								}
+							}
+						);
+						return false;
+					});
+            	});
 	    });
 	</script>
 	<!----Calender -------->
@@ -80,13 +100,6 @@
 	<script src="js/clndr.js"></script>
 	<script src="js/site.js"></script>
 	<!----End Calender -------->
-        <script type="text/javascript">
-            /*$(document).ready(function() {
-                var object2 = JSON.parse(localStorage.getItem('key'));
-                $("#titulo").empty();
-                $("#titulo").html(object2.nombre_u);
-            });*/  
-        </script>
         <script language ="Javascript">
 
 		<?php  
@@ -113,30 +126,6 @@
 		<?php
 		}
 		?>
-        </script>
-        <script language ="Javascript">
-            function leer()
-            {
-				var object2 = JSON.parse(localStorage.getItem('key'));
-				$(function()
-				{
-					$("#btn-enviar").click(function(){
-						var uurl="conexion/grupo_datos.php";
-						$('#hiddenid').val(object2.id_u);
-						$.ajax(
-							{
-								type:"POST",
-								url:uurl,
-								data:$("#form_grupos").serialize(),
-								success:function(data){
-									$("#resultado").html(data);
-								}
-							}
-						);
-						return false;
-					});
-            	});
-            }
         </script>
     </head>
     <body>
@@ -276,15 +265,18 @@
 															$idctt_opciones=$campoOpciones['idctt_opciones'];
                                                     ?>
                                                             <div class="rel_post_list">
-                                                                <div class="rel__check" style="float:left;width:100%">
+                                                                <div class="rel__check" style="float:left;width:100%">	
                                                                     <div style="float:left;width:10%">
+                                                                    <script>
+																		var objectct = JSON.parse(localStorage.getItem('<?php echo $idctt_opciones ?>'));
+																	</script>
                                                                         <input type="checkbox" name="chck<?php echo $idctt_opciones?>" id="chck<?php echo $idctt_opciones?>" onclick="marca_<?php echo $idctt_opciones ?>()">
                                                                     </div>
                                                                     <div style="float:left;width:30%">
                                                                         <i><?php echo $desc_opcion?> </i>
                                                                     </div>
                                                                     <div style="float:left;width:60%">
-                                                                        <input type="text" class="text" name="texto_<?php echo $idctt_opciones?>" id="texto_<?php echo $idctt_opciones?>" value="" disabled>
+                                                                        <input type="text" class="text" name="texto_<?php echo $idctt_opciones?>" id="texto_<?php echo $idctt_opciones?>" value="javascript:objectct.<?php echo $idctt_opciones ?>" disabled>
                                                                     </div> 
                                                                 </div>
                                                                 <div class="clear"></div>
@@ -300,7 +292,7 @@
                                                     ?>
                                             <div class="acord_btns">
                                             
-                                                <input type="button" value="Guardar" name="btn-enviar" id="btn-enviar" onclick="leer()">
+                                                <input type="button" value="Guardar" name="btn-enviar" id="btn-enviar">
 						<input type="reset" value="borrar">
 						<div class="clear"></div>
                                             </div>
