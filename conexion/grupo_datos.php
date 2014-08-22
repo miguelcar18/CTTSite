@@ -35,6 +35,7 @@
 				<script>
 					var opcionesls = { '<?php echo $verGrupoOpcion?>' : '<?php echo $valor?>'};
 					localStorage.setItem('<?php echo $verGrupoOpcion?>', JSON.stringify(opcionesls));
+					var obtenerls = JSON.parse(localStorage.getItem('<?php echo $verGrupoOpcion?>'));
 				</script>
                 <?php
 			}
@@ -49,9 +50,21 @@
 					localStorage.removeItem('<?php echo $verGrupoOpcion?>');
 					var opcionesls = { '<?php echo $verGrupoOpcion?>' : '<?php echo $valor?>'};
 					localStorage.setItem('<?php echo $verGrupoOpcion?>', JSON.stringify(opcionesls));
+					var obtenerls = JSON.parse(localStorage.getItem('<?php echo $verGrupoOpcion?>'));
 				</script>
                 <?php
 			}
+			?>
+            <script>
+            $(document).ready(function(){
+				$("#chck"+<?php echo $verGrupoOpcion?>+"").prop("checked", false);
+				$("#chck"+<?php echo $verGrupoOpcion?>+"").prop("disabled", true);
+				//donde dice holaaaaa debe ir obtenerls.<?php //echo $verGrupoOpcion?>
+				//no se porque no me funciona el val de jquery
+				$("#text_"+<?php echo $verGrupoOpcion?>+"").val("holaaaaa");
+            });
+        </script>
+            <?php
         }
         
         }

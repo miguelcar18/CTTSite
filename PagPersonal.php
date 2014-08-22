@@ -118,24 +118,24 @@
             function leer()
             {
 				var object2 = JSON.parse(localStorage.getItem('key'));
-            $(function()
-            {
-                $("#btn-enviar").click(function(){
-                    var uurl="conexion/grupo_datos.php";
-					$('#hiddenid').val(object2.id_u);
-                    $.ajax(
-                        {
-                            type:"POST",
-                            url:uurl,
-                            data:$("#form_grupos").serialize(),
-                            success:function(data){
-                                $("#resultado").html(data);
-                            }
-                        }
-                    );
-                    return false;
-                });
-            });
+				$(function()
+				{
+					$("#btn-enviar").click(function(){
+						var uurl="conexion/grupo_datos.php";
+						$('#hiddenid').val(object2.id_u);
+						$.ajax(
+							{
+								type:"POST",
+								url:uurl,
+								data:$("#form_grupos").serialize(),
+								success:function(data){
+									$("#resultado").html(data);
+								}
+							}
+						);
+						return false;
+					});
+            	});
             }
         </script>
     </head>
