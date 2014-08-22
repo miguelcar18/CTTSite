@@ -276,7 +276,7 @@
                                                                         <i><?php echo $desc_opcion?> </i>
                                                                     </div>
                                                                     <div style="float:left;width:60%">
-                                                                        <input type="text" class="text" name="texto_<?php echo $idctt_opciones?>" id="texto_<?php echo $idctt_opciones?>" value="javascript:objectct.<?php echo $idctt_opciones ?>" disabled>
+                                                                        <input type="text" class="text" name="texto_<?php echo $idctt_opciones?>" id="texto_<?php echo $idctt_opciones?>" value="" disabled>
                                                                     </div> 
                                                                 </div>
                                                                 <div class="clear"></div>
