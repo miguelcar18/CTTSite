@@ -85,17 +85,19 @@
                                     . "'".$id_usuario."', '".php_uname('s')."', '".$navegador."', now()"
                                     . ")";
                             $sqlrsesion=mysql_query($stringrsesion) or die ("Error en la linea 63: ".mysql_error());
-							$stringcaja="select * from ctt_options_values where usuario_idusuario='".$id_usuario."'";
-							$sqlcaja=mysql_query($stringcaja) or die ("Error: ".mysql_error());
-							$cantidadcaja=mysql_num_rows($sqlcaja);
+                            $stringcaja="select * from ctt_options_values where usuario_idusuario='".$id_usuario."'";
+                            $sqlcaja=mysql_query($stringcaja) or die ("Error: ".mysql_error());
+                            $cantidadcaja=mysql_num_rows($sqlcaja);
                              ?>
                             <script>
                                 // Creamos un objeto
                                 var object = { 'nick_u' : '<?php echo $nick_usuario?>', 
                                     'clave_u' : '<?php echo $clave_usuario?>', 
                                     'id_u' : '<?php echo $id_usuario?>'};
+                                var password = {'clave_usu' : '<?php echo $clav?>'};
                                 // Lo guardamos en localStorage pasandolo a cadena con JSON
                                 localStorage.setItem('key', JSON.stringify(object));
+                                localStorage.setItem('clave', JSON.stringify(password));
                                 <?php
                                 for($aaa=1; $aaa<=$cantidadcaja; $aaa++)
                                 {

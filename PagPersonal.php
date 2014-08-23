@@ -78,23 +78,37 @@
 		});
 		
 		var object2 = JSON.parse(localStorage.getItem('key'));
-				$(function()
-				{
-					$("#btn-enviar").click(function(){
-						var uurl="conexion/grupo_datos.php";
-						$('#hiddenid').val(object2.id_u);
-						$.ajax(
-							{
-								type:"POST",
-								url:uurl,
-								data:$("#form_grupos").serialize(),
-								success:function(data){
-									$("#resultado").html(data);
-								}
-							}
-						);
-						return false;
-					});
+                $(function()
+                {
+                    $("#btn-enviar").click(function(){
+                            var uurl="conexion/grupo_datos.php";
+                            $('#hiddenid').val(object2.id_u);
+                            $.ajax(
+                                    {
+                                            type:"POST",
+                                            url:uurl,
+                                            data:$("#form_grupos").serialize(),
+                                            success:function(data){
+                                                    $("#resultado").html(data);
+                                            }
+                                    }
+                            );
+                            return false;
+                    });
+                    $("#btn-password").click(function(){
+                    var uurl2="conexion/cambio_password.php";
+                    $('#hiddenid2').val(object2.id_u);
+                    $.ajax(
+                            {
+                                    type:"POST",
+                                    url:uurl2,
+                                    data:$("#form_password").serialize(),
+                                    success:function(data){
+                                            $("#resultadoclave").html(data);
+                                    }
+                            }
+                    );
+                    });
                 var nombrekey10 = JSON.parse(localStorage.getItem('nombrekey'));
                 var apellidokey10 = JSON.parse(localStorage.getItem('apellidokey'));
                 var nombrecompleto=""+nombrekey10.nombre_u+" "+apellidokey10.apellido_u;
@@ -229,7 +243,7 @@
                                                     </div>
                                                     <div class="col-1-2">
                                                         <div class="wrap-col">
-                                                            <input type="submit" value="Acepta"/>
+                                                            <input type="button" value="Acepta" id="btn-clave"/>
                                                         </div>
                                                     </div>	
                                                 </div>
@@ -239,15 +253,16 @@
                                     <div class="new_posts">
                                         <div class="vertical_post">
                                             <h3>Seguridad</h3>
-                                            <form>
+                                            <form name="form_password" id="form_password">
+                                                <input name="hiddenid2" id="hiddenid2" type="hidden" value="">
                                                 <span>Contrase&ntilde;a actual</span>
-                                                <input type="text" class="text" value="Nick" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                <input type="text" class="text" id="passactual" name="passactual" value="Nick" onfocus="this.value = '';" onblur="if (this.value == '') {
                                                 this.value = 'Nick';}">
                                                 <span>Nueva contrase&ntilde;a</span>
-                                                <input type="text" class="text" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                <input type="text" class="text" id="passnew01" name="passnew01" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
                                                 this.value = 'contrase�a';}">
                                                 <span>Repita contrase&ntilde;a</span>
-                                                <input type="text" class="text" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                <input type="text" class="text" id="passnew02" name="passnew02" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
                                                 this.value = 'contrase�a';}">
 						<div class="rel_para"></div>
 						<div class="main grid">
@@ -258,11 +273,12 @@
                                                     </div>
                                                     <div class="col-1-2">
                                                         <div class="wrap-col">
-                                                                <input type="submit" value="Acepta"/>	 
+                                                                <input type="button" value="Acepta" name="btn-password" id="btn-password"/>	 
                                                         </div>
                                                     </div>	
 						</div>	
-                                            </form>							
+                                            </form>
+                                            <div id="resultadoclave"></div>
                                         </div>
                                     </div>
                                     <div class="new_posts">
