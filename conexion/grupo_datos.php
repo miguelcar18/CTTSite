@@ -7,9 +7,32 @@
         include("funciones_mysql.php");
         conectar();
 		
+        $stringbna="select * from ctt_opciones "
+        . "where desc_opcion='Nombre' "
+        . "or desc_opcion='Apellido'";
+        $sqlbna=mysql_query($stringbna) or die("Error: ".mysql_error());
+        
+        $idnombre="";
+        $idapellido="";
+        for($bna=1; $bna<=2; $bna++)
+        {
+            $campobna=mysql_fetch_array($sqlbna);
+            $idbna=$campobna['idctt_opciones'];
+            $descbna=$campobna['desc_opcion'];
+            if($descbna=='Nombre')
+            {
+                $idnombre.=$idbna;
+            }
+            else if($descbna=='Apellido')
+            {
+                $idapellido.=$idbna;
+            }
+        }
+        
         foreach($_POST as $nombre_campo => $valor){ 
         $asignacion = "\$" . $nombre_campo . "='" . $valor . "';";
         eval($asignacion);
+        
         if($valor != 'on' and $nombre_campo != 'hiddenid')
         {
             $verGrupoOpcion=str_replace('texto_','',$nombre_campo);
@@ -54,13 +77,38 @@
 				</script>
                 <?php
 			}
+                        if($idnombre == $verGrupoOpcion)
+                        {
+                            ?>
+                            <script>
+                            localStorage.removeItem('nombrekey');
+                            var setnombre = { 'nombre_u' : '<?php echo $valor?>'};
+                            localStorage.setItem('nombrekey', JSON.stringify(setnombre));
+                            </script>
+                            <?php
+                        }
+                        if($idapellido == $verGrupoOpcion)
+                        {
+                            ?>
+                            <script>
+                            localStorage.removeItem('apellidokey');
+                            var setapellido = { 'apellido_u' : '<?php echo $valor?>'};
+                            localStorage.setItem('apellidokey', JSON.stringify(setapellido));
+                            </script>
+                            <?php
+                        }
 			?>
             <script>
+            var nombrekey0 = JSON.parse(localStorage.getItem('nombrekey'));
+            var apellidokey0 = JSON.parse(localStorage.getItem('apellidokey'));
+            var nombrecompleto0=""+nombrekey0.nombre_u+" "+apellidokey0.apellido_u;
+
             $(document).ready(function(){
 				$("#chck"+<?php echo $verGrupoOpcion?>+"").prop("checked", false);
 				$("#texto_"+<?php echo $verGrupoOpcion?>+"").attr("disabled", true);
 				//donde dice holaaaaa debe ir obtenerls.<?php //echo $verGrupoOpcion?>
 				$("#texto_"+<?php echo $verGrupoOpcion?>+"").val(""+obtenerls.<?php echo $verGrupoOpcion?>+"");
+                                $("#titulo").html(""+nombrecompleto0+"");
             });
         </script>
             <?php

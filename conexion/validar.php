@@ -18,6 +18,11 @@
             $ew = obtenerNavegadorWeb();
             $navegador = $ew['nombre'];
             
+            $stringbna="select * from ctt_opciones "
+            . "where desc_opcion='Nombre' "
+            . "or desc_opcion='Apellido'";
+            $sqlbna=mysql_query($stringbna) or die("Error: ".mysql_error());
+            
             if (!empty($_POST['nick']) && !empty($_POST['password']))
             {
                 $usu=$_POST['nick'];
@@ -34,7 +39,6 @@
                         $id_usuario=$rs['idusuario'];
                         $nick_usuario=$rs['nick_usuario'];
                         $clave_usuario=$rs['clave_usuario'];
-                        $nombre_usuario=$rs['nombre_usuario'];
                         $habilitado=$rs['enabled'];
                         if($clav==$clave_usuario && $habilitado==0)
                         {
@@ -56,6 +60,23 @@
                         
                         else if($clav==$clave_usuario && $habilitado==1)
                         {
+                            $idnombre="";
+                            $idapellido="";
+                            for($bna=1; $bna<=2; $bna++)
+                            {
+                                $campobna=mysql_fetch_array($sqlbna);
+                                $idbna=$campobna['idctt_opciones'];
+                                $descbna=$campobna['desc_opcion'];
+                                if($descbna=='Nombre')
+                                {
+                                    $idnombre.=$idbna;
+                                }
+                                else if($descbna=='Apellido')
+                                {
+                                    $idapellido.=$idbna;
+                                }
+                            }
+                            
                             $stringrsesion="insert into ctt_usuarios_sesiones "
                                     . "("
                                     . "idusuario_sesion, so_sesion, navegador_sesion, fecha_sesion"
@@ -72,20 +93,36 @@
                                 // Creamos un objeto
                                 var object = { 'nick_u' : '<?php echo $nick_usuario?>', 
                                     'clave_u' : '<?php echo $clave_usuario?>', 
-                                    'nombre_u' : '<?php echo $nombre_usuario?>',
                                     'id_u' : '<?php echo $id_usuario?>'};
                                 // Lo guardamos en localStorage pasandolo a cadena con JSON
                                 localStorage.setItem('key', JSON.stringify(object));
-								<?php
-								for($aaa=1; $aaa<=$cantidadcaja; $aaa++)
-								{
-									$campocaja=mysql_fetch_array($sqlcaja);
-								?>
-								var opciones = { 'data<?php echo $campocaja['idOpcion']?>' : '<?php echo $campocaja['value']?>'};
-								localStorage.setItem('ls<?php echo $campocaja['idOpcion']?>', JSON.stringify(opciones));
-								<?php
-								}
-								?>
+                                <?php
+                                for($aaa=1; $aaa<=$cantidadcaja; $aaa++)
+                                {
+                                        $campocaja=mysql_fetch_array($sqlcaja);
+                                ?>
+                                var opciones = { 'data<?php echo $campocaja['idOpcion']?>' : '<?php echo $campocaja['value']?>'};
+                                localStorage.setItem('ls<?php echo $campocaja['idOpcion']?>', JSON.stringify(opciones));
+                                
+                                <?php
+                                    if($idnombre == $campocaja['idOpcion'])
+                                    {
+                                        ?>
+                                        var setnombre = { 'nombre_u' : '<?php echo $campocaja['value']?>'};
+                                        localStorage.setItem('nombrekey', JSON.stringify(setnombre));
+
+                                        <?php
+                                    }
+                                    if($idapellido == $campocaja['idOpcion'])
+                                    {
+                                        ?>
+                                        var setapellido = { 'apellido_u' : '<?php echo $campocaja['value']?>'};
+                                        localStorage.setItem('apellidokey', JSON.stringify(setapellido));
+                                        <?php
+                                    }
+                                    //echo $idapellido." - ".$campocaja['idOpcion']." / ".$idnombre." - ".$campocaja['idOpcion'];
+                                }
+                                ?>
                             </script>
                             <?php
                             pasar("../PagPersonal.php");

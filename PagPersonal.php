@@ -5,7 +5,7 @@
     $stringGrupo="select * from ctt_grupos_opciones order by id_grupo asc";
     $sqlGrupo=mysql_query($stringGrupo) or die ("Error linea 7: ".mysql_error());
     $cantidadGrupo=mysql_num_rows($sqlGrupo);
-
+    
     $stringOpcJav="select idctt_opciones, desc_opcion from ctt_opciones order by id_grupo asc";
     $sqlOpcJav=mysql_query($stringOpcJav) or die("Error linea 10: ".mysql_error());
 	$sqlOpcJav2=mysql_query($stringOpcJav) or die("Error linea 11: ".mysql_error());
@@ -40,6 +40,8 @@
         <script>
             //alert(localStorage.length);
             var object2 = JSON.parse(localStorage.getItem('key'));
+            var nombrekey = JSON.parse(localStorage.getItem('nombrekey'));
+            var apellidokey = JSON.parse(localStorage.getItem('apellidokey'));
             // Mostrar variabes localstorage
             /*alert(object2.nick_u);
             alert(object2.clave_u);
@@ -47,6 +49,7 @@
             alert(object2.id_u);*/
 			$(document).ready(function() {
 				$('#hiddenid').val(object2.id_u);
+                                $('#titulo').val(""+nombrekey.nombre_u+" "+apellidokey.apellido_u);
             });
         </script>
         
@@ -92,6 +95,11 @@
 						);
 						return false;
 					});
+                var nombrekey10 = JSON.parse(localStorage.getItem('nombrekey'));
+                var apellidokey10 = JSON.parse(localStorage.getItem('apellidokey'));
+                var nombrecompleto=""+nombrekey10.nombre_u+" "+apellidokey10.apellido_u;
+                
+                $("#titulo").html(""+nombrecompleto+"");
             	});
 				<?php  
 		for ($aa=1; $aa<=$cantOpcJav2; $aa++)
