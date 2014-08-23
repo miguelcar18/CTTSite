@@ -20,15 +20,19 @@
         $nick1=$_POST['nombre_usuario'];
         $email1=$_POST['email'];
         $password1=  crypt($_POST['password1'],"2A");
+        $pais=$_POST['pais'];
+        $idioma=$_POST['idioma'];
 
         $stringingreso="insert into usuario "
-                . "(nick_usuario, clave_usuario, email_usuario, enabled, hash) "
+                . "(nick_usuario, clave_usuario, email_usuario, enabled, hash, idioma_usuario, pais_usuario) "
                 . "values "
                 . "('".$nick1."',"
                 . "'".$password1."',"
                 . "'".$email1."',"
                 . "'0',"
-                . "'".crypt($nick1,"2A")."')";
+                . "'".crypt($nick1,"2A")."',"
+                . "'".$idioma."',"
+                . "'".$pais."')";
         
         $sqlingreso=mysql_query($stringingreso) or die ("Error al ingresar los datos".mysql_error());
         

@@ -16,7 +16,7 @@
 <html>
     <head>
         <title>CTT | Home :: Pag.Personal</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!--<link href='http://fonts.googleapis.com/css?family=Monda:400,700' rel='stylesheet' type='text/css'>-->
         
@@ -42,6 +42,10 @@
             var object2 = JSON.parse(localStorage.getItem('key'));
             var nombrekey = JSON.parse(localStorage.getItem('nombrekey'));
             var apellidokey = JSON.parse(localStorage.getItem('apellidokey'));
+            var nickkey = JSON.parse(localStorage.getItem('nickkey'));
+            var emailkey = JSON.parse(localStorage.getItem('emailkey'));
+            var idiomakey = JSON.parse(localStorage.getItem('idiomakey'));
+            var paiskey = JSON.parse(localStorage.getItem('paiskey'));
             // Mostrar variabes localstorage
             /*alert(object2.nick_u);
             alert(object2.clave_u);
@@ -49,7 +53,11 @@
             alert(object2.id_u);*/
 			$(document).ready(function() {
 				$('#hiddenid').val(object2.id_u);
+                                $('#txtnick').val(nickkey.nick_usu);
+                                $('#txtmail').val(emailkey.email_usu);
                                 $('#titulo').val(""+nombrekey.nombre_u+" "+apellidokey.apellido_u);
+                                $('#lg'+idiomakey.idioma_usu+'').attr('selected', 'selected');
+                                $('#ct'+paiskey.pais_usu+'').attr('selected', 'selected');
             });
         </script>
         
@@ -105,6 +113,20 @@
                                     data:$("#form_password").serialize(),
                                     success:function(data){
                                             $("#resultadoclave").html(data);
+                                    }
+                            }
+                    );
+                    });
+                    $("#btn-personal").click(function(){
+                    var uurl3="conexion/cambio_personal.php";
+                    $('#hiddenid3').val(object2.id_u);
+                    $.ajax(
+                            {
+                                    type:"POST",
+                                    url:uurl3,
+                                    data:$("#form_personal").serialize(),
+                                    success:function(data){
+                                            $("#resultadopersonal").html(data);
                                     }
                             }
                     );
@@ -212,28 +234,29 @@
                                         </div>
                                         <!-- fin  punto -->  
                                         <div class="vertical_post">
-                                            <form>
+                                            <form name="form_personal" id="form_personal">
+                                                <input name="hiddenid3" id="hiddenid3" type="hidden" value="">
                                                 <span>Nombre ususario o nick</span>
-                                                <input type="text" class="text" value="Nick" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                <input type="text" class="text" id="txtnick" name="txtnick" value="Nick" onfocus="this.value = '';" onblur="if (this.value == '') {
                                                     this.value = 'Nick';
                                                 }">
                                                 <span>eMail</span>
-                                                <input type="text" class="text" value="contraseï¿½a" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                <input type="text" class="text" id="txtmail" name="txtmail" value="contraseï¿½a" onfocus="this.value = '';" onblur="if (this.value == '') {
                                                 this.value = 'contraseï¿½a';
                                                 }">
                                                 <span>Idioma preferido</span>			
-                                                <select name=idioma class="combo" >
-                                                    <option name=one value=uno> uno </option>
-                                                    <option name=two value=dos> dos </option>
-                                                    <option name=three value=tres selected> tres </option>
-                                                    <option name=four value=cuatro> cuatro </option>
+                                                <select name="idioma" id="idioma" class="combo" >
+                                                    <option name="lg0" id="lg0" value="0"> < < Seleccione > > </option>
+                                                    <option name="lg1" id="lg1" value="1"> Español </option>
+                                                    <option name="lg2" id="lg2" value="2"> Inglés </option>
+                                                    <option name="lg3" id="lg3" value="3"> Francés </option>
                                                 </select>
                                                 <span>Pais</span>
-                                                <select name=idioma class="combo" >
-                                                    <option name=one value=uno selected> uno </option>
-                                                    <option name=two value=dos> dos </option>
-                                                    <option name=three value=tres > tres </option>
-                                                    <option name=four value=cuatro> cuatro </option>
+                                                <select name="pais" id="pais" class="combo" >
+                                                    <option name="ct0" id="ct0" value="0"> < < Seleccione > > </option>
+                                                    <option name="ct1" id="ct1" value="1"> España </option>
+                                                    <option name="ct2" id="ct2" value="2"> Francia </option>
+                                                    <option name="ct3" id="ct3" value="3"> Portugal </option>
                                                 </select>
                                                 <div class="main grid">
                                                     <div class="col-1-2">
@@ -243,11 +266,12 @@
                                                     </div>
                                                     <div class="col-1-2">
                                                         <div class="wrap-col">
-                                                            <input type="button" value="Acepta" id="btn-clave"/>
+                                                            <input type="button" value="Acepta" name="btn-personal" id="btn-personal"/>
                                                         </div>
                                                     </div>	
                                                 </div>
                                             </form>
+                                            <div id="resultadopersonal"></div>
                                         </div>
                                     </div>
                                     <div class="new_posts">

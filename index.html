@@ -73,6 +73,16 @@
             {
                 fixelement(form.password2, "Las contraseñas deben de ser iguales.");
             }
+            
+            else if (form.idioma.value == "0") 
+            {
+                fixelement(form.idioma, "Por favor, seleccione un idiona.");
+            }
+            else if (form.pais.value == "0") 
+            {
+                fixelement(form.pais, "Por favor, seleccione un pais.");
+            }
+            
             else if (form.checkbox.checked == false) 
             {
                 fixelement(form.checkbox, "Debe aceptar las condiciones");
@@ -179,6 +189,20 @@
                                 <span>Contraseña</span>
                                 <input type="text" name="password2" id="password2" value="repetir contraseña" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'repetir contraseña';}">
                                 <span>Repetir Contraseña</span>
+                                <select name="idioma" id="idioma" class="combo" >
+                                    <option name="lg0" id="lg0" value="0"> < < Seleccione > > </option>
+                                    <option name="lg1" id="lg1" value="1"> Español </option>
+                                    <option name="lg2" id="lg2" value="2"> Inglés </option>
+                                    <option name="lg3" id="lg3" value="3"> Francés </option>
+                                </select>
+                                <span>Idioma preferido</span>
+                                <select name="pais" id="pais" class="combo" >
+                                    <option name="ct0" id="ct0" value="0"> < < Seleccione > > </option>
+                                    <option name="ct1" id="ct1" value="1"> España </option>
+                                    <option name="ct2" id="ct2" value="2"> Francia </option>
+                                    <option name="ct3" id="ct3" value="3"> Portugal </option>
+                                </select>
+                                <span>Pais</span>
                                 <div>
                                     <input type="checkbox" name="checkbox">Aceptó condiciones
                                     <br><br>

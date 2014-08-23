@@ -39,6 +39,9 @@
                         $id_usuario=$rs['idusuario'];
                         $nick_usuario=$rs['nick_usuario'];
                         $clave_usuario=$rs['clave_usuario'];
+                        $email_usuario=$rs['email_usuario'];
+                        $idioma_usuario=$rs['idioma_usuario'];
+                        $pais_usuario=$rs['pais_usuario'];
                         $habilitado=$rs['enabled'];
                         if($clav==$clave_usuario && $habilitado==0)
                         {
@@ -95,9 +98,17 @@
                                     'clave_u' : '<?php echo $clave_usuario?>', 
                                     'id_u' : '<?php echo $id_usuario?>'};
                                 var password = {'clave_usu' : '<?php echo $clav?>'};
+                                var nick = {'nick_usu' : '<?php echo $nick_usuario?>'};
+                                var email = {'email_usu' : '<?php echo $email_usuario?>'};
+                                var idioma = {'idioma_usu' : '<?php echo $idioma_usuario?>'};
+                                var pais = {'pais_usu' : '<?php echo $pais_usuario?>'};
                                 // Lo guardamos en localStorage pasandolo a cadena con JSON
                                 localStorage.setItem('key', JSON.stringify(object));
                                 localStorage.setItem('clave', JSON.stringify(password));
+                                localStorage.setItem('nickkey', JSON.stringify(nick));
+                                localStorage.setItem('emailkey', JSON.stringify(email));
+                                localStorage.setItem('idiomakey', JSON.stringify(idioma));
+                                localStorage.setItem('paiskey', JSON.stringify(pais));
                                 <?php
                                 for($aaa=1; $aaa<=$cantidadcaja; $aaa++)
                                 {
