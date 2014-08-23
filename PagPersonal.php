@@ -241,8 +241,8 @@
                                                     this.value = 'Nick';
                                                 }">
                                                 <span>eMail</span>
-                                                <input type="text" class="text" id="txtmail" name="txtmail" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                                this.value = 'contrase�a';
+                                                <input type="text" class="text" id="txtmail" name="txtmail" value="contrase&ntilde;a" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                this.value = 'contrase&ntilde;a';
                                                 }">
                                                 <span>Idioma preferido</span>			
                                                 <select name="idioma" id="idioma" class="combo" >
@@ -283,11 +283,11 @@
                                                 <input type="text" class="text" id="passactual" name="passactual" value="Nick" onfocus="this.value = '';" onblur="if (this.value == '') {
                                                 this.value = 'Nick';}">
                                                 <span>Nueva contrase&ntilde;a</span>
-                                                <input type="text" class="text" id="passnew01" name="passnew01" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                <input type="text" class="text" id="passnew01" name="passnew01" value="contrase&ntilde;a" onfocus="this.value = '';" onblur="if (this.value == '') {
                                                 this.value = 'contrase�a';}">
                                                 <span>Repita contrase&ntilde;a</span>
-                                                <input type="text" class="text" id="passnew02" name="passnew02" value="contrase�a" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                                this.value = 'contrase�a';}">
+                                                <input type="text" class="text" id="passnew02" name="passnew02" value="contrase&ntilde;a" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                this.value = 'contrase&ntilde;a';}">
 						<div class="rel_para"></div>
 						<div class="main grid">
                                                     <div class="col-1-2">
