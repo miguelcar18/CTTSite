@@ -36,7 +36,7 @@
         <script src="js/vallenato.js" type="text/javascript" charset="utf-8"></script>
         <link rel="stylesheet" href="css/vallenato.css" type="text/css" media="screen" charset="utf-8">
         <!----start-accordinatio-files--->	
-        
+                
         <script>
             //alert(localStorage.length);
             var object2 = JSON.parse(localStorage.getItem('key'));
@@ -51,13 +51,13 @@
             alert(object2.clave_u);
             alert(object2.nombre_u);
             alert(object2.id_u);*/
-            $(document).ready(function() {
-                $('#hiddenid').val(object2.id_u);
-                $('#txtnick').val(nickkey.nick_usu);
-                $('#txtmail').val(emailkey.email_usu);
-                $('#titulo').val(""+nombrekey.nombre_u+" "+apellidokey.apellido_u);
-                $('#lg'+idiomakey.idioma_usu+'').attr('selected', 'selected');
-                $('#ct'+paiskey.pais_usu+'').attr('selected', 'selected');
+			$(document).ready(function() {
+				$('#hiddenid').val(object2.id_u);
+                                $('#txtnick').val(nickkey.nick_usu);
+                                $('#txtmail').val(emailkey.email_usu);
+                                $('#titulo').val(""+nombrekey.nombre_u+" "+apellidokey.apellido_u);
+                                $('#lg'+idiomakey.idioma_usu+'').attr('selected', 'selected');
+                                $('#ct'+paiskey.pais_usu+'').attr('selected', 'selected');
             });
         </script>
         
@@ -72,7 +72,9 @@
                         var $tab = $(this);
                         var $info = $('#tabInfo');
                         var $name = $('span', $info);
+
                         $name.text($tab.text());
+
                         $info.show();
                     }
                 });
@@ -87,59 +89,71 @@
                 $(function()
                 {
                     $("#btn-enviar").click(function(){
-                        var uurl="conexion/grupo_datos.php";
-                        $('#hiddenid').val(object2.id_u);
-                        $.ajax(
-                        {
-                            type:"POST",
-                            url:uurl,
-                            data:$("#form_grupos").serialize(),
-                            success:function(data){
-                                    $("#resultado").html(data);
-                            }
-                        }
-                        );
-                        return false;
+                            var uurl="conexion/grupo_datos.php";
+                            $('#hiddenid').val(object2.id_u);
+                            $.ajax(
+                                    {
+                                            type:"POST",
+                                            url:uurl,
+                                            data:$("#form_grupos").serialize(),
+                                            success:function(data){
+                                                    $("#resultado").html(data);
+                                            }
+                                    }
+                            );
+                            return false;
                     });
                     $("#btn-password").click(function(){
-                        var uurl2="conexion/cambio_password.php";
-                        $('#hiddenid2').val(object2.id_u);
-                        $.ajax(
-                        {
-                            type:"POST",
-                            url:uurl2,
-                            data:$("#form_password").serialize(),
-                            success:function(data){
-                                    $("#resultadoclave").html(data);
+                    var uurl2="conexion/cambio_password.php";
+                    $('#hiddenid2').val(object2.id_u);
+                    $.ajax(
+                            {
+                                    type:"POST",
+                                    url:uurl2,
+                                    data:$("#form_password").serialize(),
+                                    success:function(data){
+                                            $("#resultadoclave").html(data);
+                                    }
                             }
-                        }
-                        );
-                        return false;
+                    );
                     });
-                    
-                    var nombrekey10 = JSON.parse(localStorage.getItem('nombrekey'));
-                    var apellidokey10 = JSON.parse(localStorage.getItem('apellidokey'));
-                    var nombrecompleto=""+nombrekey10.nombre_u+" "+apellidokey10.apellido_u;
+                    $("#btn-personal").click(function(){
+                    var uurl3="conexion/cambio_personal.php";
+                    $('#hiddenid3').val(object2.id_u);
+                    $.ajax(
+                            {
+                                    type:"POST",
+                                    url:uurl3,
+                                    data:$("#form_personal").serialize(),
+                                    success:function(data){
+                                            $("#resultado2").html(data);
+                                    }
+                            }
+                    );
+                    });
+                var nombrekey10 = JSON.parse(localStorage.getItem('nombrekey'));
+                var apellidokey10 = JSON.parse(localStorage.getItem('apellidokey'));
+                var nombrecompleto=""+nombrekey10.nombre_u+" "+apellidokey10.apellido_u;
                 
-                    $("#titulo").html(""+nombrecompleto+"");
-                });
-                    <?php  
-                    for ($aa=1; $aa<=$cantOpcJav2; $aa++)
-                    {
-                            $campoOpcJavb=mysql_fetch_array($sqlOpcJav2);
-                            $idGrupo2=$campoOpcJavb['idctt_opciones'];
-                            $descOpcion2=$campoOpcJavb['desc_opcion'];
-                            $nmarca2=$idGrupo2;
-                    ?>
-                    var object1 = JSON.parse(localStorage.getItem('ls<?php echo $nmarca2 ?>'));
-                    var data0101=object1.data<?php echo $nmarca2 ?>;
-                    $('#texto_<?php echo $nmarca2 ?>').val(data0101);
-                    <?php
-                    }
-                    ?>
+                $("#titulo").html(""+nombrecompleto+"");
+            	});
+				<?php  
+		for ($aa=1; $aa<=$cantOpcJav2; $aa++)
+		{
+			$campoOpcJavb=mysql_fetch_array($sqlOpcJav2);
+			$idGrupo2=$campoOpcJavb['idctt_opciones'];
+			$descOpcion2=$campoOpcJavb['desc_opcion'];
+			$nmarca2=$idGrupo2;
+		?>
+		var object1 = JSON.parse(localStorage.getItem('ls<?php echo $nmarca2 ?>'));
+		var data0101=object1.data<?php echo $nmarca2 ?>;
+				$('#texto_<?php echo $nmarca2 ?>').val(data0101);
+			<?php
+		}
+			?>
 				
-            });
-        </script>
+	    });
+	</script>
 	<!----Calender -------->
 	<link rel="stylesheet" href="css/clndr.css" type="text/css" />
 	<script src="js/underscore-min.js"></script>
@@ -258,7 +272,7 @@
                                                     </div>	
                                                 </div>
                                             </form>
-                                            <div id="resultadopersonal"></div>
+                                            <div id="resultado2"></div>
                                         </div>
                                     </div>
                                     <div class="new_posts">
@@ -356,5 +370,6 @@
                 </div>
             </div>
         </div>
+        
     </body>
 </html>
