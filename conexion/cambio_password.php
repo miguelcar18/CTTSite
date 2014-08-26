@@ -19,13 +19,13 @@
             var passwordnuevo01 = "<?php echo $passnew01; ?>";
             var passwordnuevo02 = "<?php echo $passnew02; ?>";
             
-            if(passwordnuevo01 != passwordnuevo02)
+             if(passwordnuevo01 != passwordnuevo02)
             {
                 $(document).ready(function(){
 		$.alert.open({
 		title: 'ERROR',
 		icon: 'error',
-		content: 'Las contraseñas nuevas deben de ser iguales',
+		content: 'Las contraseñas nuevas deben de ser iguales'
 		});
 		});
             }
@@ -50,7 +50,7 @@
                     $mysqlChange=mysql_query($stringChange) or die ("Error: ".mysql_error());
                 ?>
                 localStorage.removeItem('clave');
-                var passwordch = {'clave_usu' : '<?php echo $clav?>'};
+                var passwordch = {'clave_usu' : '<?php echo $passnew01?>'};
                 localStorage.setItem('clave', JSON.stringify(passwordch));
                 $(document).ready(function(){
                     $.alert.open({
