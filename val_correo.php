@@ -2,11 +2,11 @@
     <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
-<link href="css/alert.min_mensaje.css" rel="stylesheet"/>
-<link href="css/theme.min_mensaje.css" rel="stylesheet"/>
-<script src="js/jquery_mensaje.js"></script>
-<script src="js/jquery-ui_mensaje.js"></script>
-<script src="js/alert.min_mensaje.js"></script>
+<link href="../css/alert.min_mensaje.css" rel="stylesheet"/>
+<link href="../css/theme.min_mensaje.css" rel="stylesheet"/>
+<script src="../js/jquery_mensaje.js"></script>
+<script src="../js/jquery-ui_mensaje.js"></script>
+<script src="../js/alert.min_mensaje.js"></script>
 </head>
 
 <body>
@@ -40,19 +40,37 @@ switch($numero)
             $sql02=mysql_query($string02) or die ('Error: '.mysql_error());
             ?>
             <script>
-                alert("Validacion de registro exitosa. Ya puede iniciar sesion");
+				$(document).ready(function(){
+					$.alert.open({
+					title: 'MENSAJE',
+					icon: 'info',
+					content: 'Validacion de registro exitosa. Ya puede iniciar sesion.',
+					callback: function() {
+                    location.href = "../index.html";
+                    }
+					});
+    			});
             </script>
             <?php
-            pasar("../index.html");
+            //pasar("../index.html");
         }
         else
         {
             ?>
             <script>
-                alert("Este usuario ya ha sido registrado");
+				$(document).ready(function(){
+					$.alert.open({
+					title: 'ADVERTENCIA',
+					icon: 'warning',
+					content: 'Este usuario ya ha sido registrado.',
+					callback: function() {
+                    location.href = "../index.html";
+                    }
+					});
+    			});
             </script>
             <?php
-            pasar("../index.html");
+            //pasar("../index.html");
         }
     }
     break;
@@ -60,10 +78,19 @@ switch($numero)
     {
         ?>
             <script>
-                alert("Link no valido");
+				$(document).ready(function(){
+					$.alert.open({
+					title: 'ERROR',
+					icon: 'error',
+					content: 'Link no valido.',
+					callback: function() {
+                    location.href = "../index.html";
+                    }
+					});
+    			});
             </script>
             <?php
-            pasar("../index.html");
+            //pasar("../index.html");
     }
     break;
 }

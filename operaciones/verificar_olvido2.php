@@ -8,7 +8,9 @@ $emailobt=$_POST['email_verificar'];
 $codigoobt=$_POST['codigo'];
 $nuevaclave=crypt($_POST['password01'],"2A");
 
-$stringemail="select codigo_olvido from usuario where email_usuario='".$emailobt."' and codigo_olvido='".$codigoobt."'";
+$stringemail="select codigo_olvido from usuario "
+        . "where email_usuario='".$emailobt."' "
+        . "and codigo_olvido='".$codigoobt."'";
 $sqlemail=mysql_query($stringemail) or die ("Error en linea 8: ".mysql_error());
 $cantidademail=mysql_num_rows($sqlemail);
 ?>
@@ -33,7 +35,7 @@ if($cantidademail == 0)
 		$.alert.open({
 		title: 'ERROR',
 		icon: 'error',
-		content: 'Código invalido, por favor verifique.',
+		content: 'Datos invalidos, por favor verifique.',
 		callback: function() {
 			history.go(-1);
 			}

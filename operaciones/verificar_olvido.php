@@ -54,9 +54,9 @@ else
     $sqlolvido=mysql_query($stringolvido) or die ("Error al actualizar los datos".mysql_error());
         $mensaje_correo="Por favor, ingrese el siguiente codigo en el siguiente link<br><br><br>"
                 . "<center>"
-				. "Codigo: ".$codigoVerificar.""
+				. "Codigo: ".$codigoVerificar."<br><br>"
                 . "Link: <a href='".$_SERVER['HTTP_HOST']."/xcttsite/vistas/val_codigo.html' target='_blank'>"
-                . "CTTSite: Validar codigo ".$nick1.""
+                . "CTTSite: Validar codigo ".$nick.""
                 . "</a>"
                 . "</center>";
         $mail= new PHPMailer();
@@ -66,7 +66,7 @@ else
         $mail->Host = "smtp.gmail.com";
         $mail->Port = 465;
         $mail->From = "miguelcar18@gmail.com";
-        $mail->AddAddress($email1);
+        $mail->AddAddress($emailobt);
         $mail->Username="hostcttsite01@gmail.com";
         $mail->Password="hostcttsite01/";
         $mail->Subject="Olvido de contraseña CTTSites";
