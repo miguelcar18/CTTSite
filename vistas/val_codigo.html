@@ -3,6 +3,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>CTTSite - Olvido de contraseña</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href='http://fonts.googleapis.com/css?family=Monda:400,700' rel='stylesheet' type='text/css'>
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/clndr.css" rel="stylesheet" type="text/css" media="all" />
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/easyResponsiveTabs.js"></script>
+<script src="../js/underscore-min.js"></script>
+<script src="../js/moment-2.2.1.js"></script>
+<script src="../js/clndr.js"></script>
+<script src="../js/site.js"></script>
+
 <link href="../css/alert.min_mensaje.css" rel="stylesheet"/>
 		<link href="../css/theme.min_mensaje.css" rel="stylesheet"/>
 		<script src="../js/jquery_mensaje.js"></script>
@@ -66,22 +80,27 @@
 </head>
 
 <body>
+<div class="subcribes" align="center">
+<div class="subscribe" align="center">
 <form action="../operaciones/verificar_olvido2.php" method="post" name="form" onSubmit = "return verifica(this)">
-<h3>Olvido de Contraseña</h3>
-<p><span>Ingrese el email: </span><br />
-  <input name="email_verificar" type="text" />
-</p>
-<p><span>Ingrese el código de verificación: </span><br>
-  <input name="codigo" type="text" />
-</p>
-<p><span>Nueva contraseña: </span><br />
-  <input name="password01" type="text" />
-</p>
-<p><span>Repetir nueva contraseña: </span><br />
-  <input name="password02" type="text" />
+<h4 style="width:50%;">Olvido de Contraseña</h4>
+<br>
+  <input name="email_verificar" type="text" style="width:300px"/>
+<span style="font-size:16px">Ingrese el email: </span>
+<br>
+  <input name="codigo" type="text" style="width:300px"/>
+<span style="font-size:16px">Ingrese el código de verificación: </span>
+<br>
+  <input name="password01" type="text" style="width:300px"/>
+<span style="font-size:16px">Nueva contraseña: </span>
+<br>
+  <input name="password02" type="text" style="width:300px"/>
+<span style="font-size:16px">Repetir nueva contraseña: </span>
 <br>
   <input name="ver_email" id="ver_email" type="submit" value="Enviar"/>
-</p>
+
 </form>
+</div>
+</div>
 </body>
 </html>
