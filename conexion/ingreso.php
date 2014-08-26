@@ -73,7 +73,7 @@
         }
         $mensaje_correo="Por favor, valide su registro a traves del siguiente link <br><br><br>"
                 . "<center>"
-                . "<a href='".$_SERVER['HTTP_HOST']."/xcttsite/val_correo.php/".crypt($nick1,"2A")."' target='_blank'>"
+                . "<a href='".$_SERVER['HTTP_HOST']."/xcttsite/val_correo.php?".crypt($nick1,"2A")."' target='_blank'>"
                 . "CTTSite: Validar usuario ".$nick1.""
                 . "</a>"
                 . "</center>";
