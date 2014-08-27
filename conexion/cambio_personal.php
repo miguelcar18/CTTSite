@@ -22,8 +22,11 @@ $cantidadBuscar=mysql_num_rows($sqlBuscar);
 ?>
 
 <script>
+    /*
 var revnick = JSON.parse(localStorage.getItem('nickkey'));
 var nickbdd = revnick.nick_usu;//miguelcar18
+*/
+var nickbdd = localStorage.nick_u;
 var nick_personal="<?php echo $nick_personal?>";
 var email_personal="<?php echo $email_personal?>";
 var idioma_personal="<?php echo $idioma_personal?>";
@@ -66,15 +69,16 @@ var expRegEmail2=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     $mysqlChange=mysql_query($stringChange) or die ("Error: ".mysql_error());
     ?>
     
-    localStorage.removeItem('nickkey');
-    localStorage.removeItem('emailkey');
-    localStorage.removeItem('idiomakey');
-    localStorage.removeItem('paiskey');
+    localStorage.removeItem('nick_usu');
+    localStorage.removeItem('email_usu');
+    localStorage.removeItem('idioma_usu');
+    localStorage.removeItem('pais_usu');
     
-    var nickch = {'nick_usu' : '<?php echo $nick_personal?>'};
-    var emailch = {'email_usu' : '<?php echo $email_personal?>'};
-    var idiomach = {'idioma_usu' : '<?php echo $idioma_personal?>'};
-    var paisch = {'pais_usu' : '<?php echo $pais_personal?>'};
+    /*
+    var nickch = {'nick_usu' : '<?php //echo $nick_personal?>'};
+    var emailch = {'email_usu' : '<?php //echo $email_personal?>'};
+    var idiomach = {'idioma_usu' : '<?php //echo $idioma_personal?>'};
+    var paisch = {'pais_usu' : '<?php //echo $pais_personal?>'};
     
     localStorage.setItem('nickkey', JSON.stringify(nickch));
     localStorage.setItem('emailkey', JSON.stringify(emailch));
@@ -86,11 +90,22 @@ var expRegEmail2=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     var idiomakey2 = JSON.parse(localStorage.getItem('idiomakey'));
     var paiskey2 = JSON.parse(localStorage.getItem('paiskey'));
     
+    */
+    localStorage.nick_usu='<?php echo $nick_personal?>';
+    localStorage.email_usu='<?php echo $email_personal?>';
+    localStorage.idioma_usu='<?php echo $idioma_personal?>';
+    localStorage.pais_usu='<?php echo $pais_personal?>';
+    
+    var nickkey2 = localStorage.nick_usu;
+    var emailkey2 = localStorage.email_usu;
+    var idiomakey2 = localStorage.idioma_usu;
+    var paiskey2 = localStorage.pais_usu;
+    
     $(document).ready(function(){
-            $('#txtnick').val(nickkey2.nick_usu);
-            $('#txtmail').val(emailkey2.email_usu);
-            $('#lg'+idiomakey2.idioma_usu+'').attr('selected', 'selected');
-            $('#ct'+paiskey2.pais_usu+'').attr('selected', 'selected');
+            $('#txtnick').val(nickkey2);
+            $('#txtmail').val(emailkey2);
+            $('#lg'+idiomakey2+'').attr('selected', 'selected');
+            $('#ct'+paiskey2+'').attr('selected', 'selected');
             $.alert.open({
             title: 'MENSAJE',
             icon: 'info',

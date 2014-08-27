@@ -13,8 +13,11 @@
         
         ?>
         <script>
+            /*
             var passls = JSON.parse(localStorage.getItem('clave'));
             var passwordactual = passls.clave_usu;
+            */
+            var passwordactual = localStorage.clave_usu;
             var passwordingresado = "<?php echo $passactual; ?>";
             var passwordnuevo01 = "<?php echo $passnew01; ?>";
             var passwordnuevo02 = "<?php echo $passnew02; ?>";
@@ -49,9 +52,12 @@
                             . "where idusuario='".$_POST['hiddenid2']."'";
                     $mysqlChange=mysql_query($stringChange) or die ("Error: ".mysql_error());
                 ?>
-                localStorage.removeItem('clave');
+                localStorage.removeItem('clave_usu');
+                /*
                 var passwordch = {'clave_usu' : '<?php echo $passnew01?>'};
                 localStorage.setItem('clave', JSON.stringify(passwordch));
+                */
+                localStorage.clave_usu='<?php echo $passnew01?>';
                 $(document).ready(function(){
                     $.alert.open({
                     title: 'MENSAJE',

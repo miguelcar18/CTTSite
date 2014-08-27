@@ -93,15 +93,16 @@
                             $cantidadcaja=mysql_num_rows($sqlcaja);
                              ?>
                             <script>
+                                /*
                                 // Creamos un objeto
-                                var object = { 'nick_u' : '<?php echo $nick_usuario?>', 
-                                    'clave_u' : '<?php echo $clave_usuario?>', 
-                                    'id_u' : '<?php echo $id_usuario?>'};
-                                var password = {'clave_usu' : '<?php echo $clav?>'};
-                                var nick = {'nick_usu' : '<?php echo $nick_usuario?>'};
-                                var email = {'email_usu' : '<?php echo $email_usuario?>'};
-                                var idioma = {'idioma_usu' : '<?php echo $idioma_usuario?>'};
-                                var pais = {'pais_usu' : '<?php echo $pais_usuario?>'};
+                                var object = { 'nick_u' : '<?php //echo $nick_usuario?>', 
+                                    'clave_u' : '<?php //echo $clave_usuario?>', 
+                                    'id_u' : '<?php //echo $id_usuario?>'};
+                                var password = {'clave_usu' : '<?php //echo $clav?>'};
+                                var nick = {'nick_usu' : '<?php //echo $nick_usuario?>'};
+                                var email = {'email_usu' : '<?php //echo $email_usuario?>'};
+                                var idioma = {'idioma_usu' : '<?php //echo $idioma_usuario?>'};
+                                var pais = {'pais_usu' : '<?php //echo $pais_usuario?>'};
                                 // Lo guardamos en localStorage pasandolo a cadena con JSON
                                 localStorage.setItem('key', JSON.stringify(object));
                                 localStorage.setItem('clave', JSON.stringify(password));
@@ -109,28 +110,46 @@
                                 localStorage.setItem('emailkey', JSON.stringify(email));
                                 localStorage.setItem('idiomakey', JSON.stringify(idioma));
                                 localStorage.setItem('paiskey', JSON.stringify(pais));
+                                */
+                                
+                                localStorage.nick_u='<?php echo $nick_usuario?>';
+                                localStorage.clave_u='<?php echo $clave_usuario?>';
+                                localStorage.id_u='<?php echo $id_usuario?>';
+                                localStorage.clave_usu='<?php echo $clav?>';
+                                localStorage.nick_usu='<?php echo $nick_usuario?>';
+                                localStorage.email_usu='<?php echo $email_usuario?>';
+                                localStorage.idioma_usu='<?php echo $idioma_usuario?>';
+                                localStorage.pais_usu='<?php echo $pais_usuario?>';
+                                
                                 <?php
                                 for($aaa=1; $aaa<=$cantidadcaja; $aaa++)
                                 {
                                         $campocaja=mysql_fetch_array($sqlcaja);
                                 ?>
-                                var opciones = { 'data<?php echo $campocaja['idOpcion']?>' : '<?php echo $campocaja['value']?>'};
-                                localStorage.setItem('ls<?php echo $campocaja['idOpcion']?>', JSON.stringify(opciones));
-                                
+                                    /*
+                                var opciones = { 'data<?php //echo $campocaja['idOpcion']?>' : '<?php //echo $campocaja['value']?>'};
+                                localStorage.setItem('ls<?php //echo $campocaja['idOpcion']?>', JSON.stringify(opciones));
+                                */
+                                   localStorage.data<?php echo $campocaja['idOpcion']?>='<?php echo $campocaja['value']?>';
                                 <?php
                                     if($idnombre == $campocaja['idOpcion'])
                                     {
                                         ?>
-                                        var setnombre = { 'nombre_u' : '<?php echo $campocaja['value']?>'};
+                                        /*
+                                        var setnombre = { 'nombre_u' : '<?php //echo $campocaja['value']?>'};
                                         localStorage.setItem('nombrekey', JSON.stringify(setnombre));
-
+                                        */
+                                        localStorage.nombre_u='<?php echo $campocaja['value']?>';
                                         <?php
                                     }
                                     if($idapellido == $campocaja['idOpcion'])
                                     {
                                         ?>
-                                        var setapellido = { 'apellido_u' : '<?php echo $campocaja['value']?>'};
+                                        /*
+                                        var setapellido = { 'apellido_u' : '<?php //echo $campocaja['value']?>'};
                                         localStorage.setItem('apellidokey', JSON.stringify(setapellido));
+                                        */
+                                        localStorage.apellido_u='<?php echo $campocaja['value']?>';
                                         <?php
                                     }
                                     //echo $idapellido." - ".$campocaja['idOpcion']." / ".$idnombre." - ".$campocaja['idOpcion'];

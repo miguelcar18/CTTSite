@@ -2,11 +2,11 @@
     <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Documento sin título</title>
-<link href="../css/alert.min_mensaje.css" rel="stylesheet"/>
-<link href="../css/theme.min_mensaje.css" rel="stylesheet"/>
-<script src="../js/jquery_mensaje.js"></script>
-<script src="../js/jquery-ui_mensaje.js"></script>
-<script src="../js/alert.min_mensaje.js"></script>
+<link href="css/alert.min_mensaje.css" rel="stylesheet"/>
+<link href="css/theme.min_mensaje.css" rel="stylesheet"/>
+<script src="js/jquery_mensaje.js"></script>
+<script src="js/jquery-ui_mensaje.js"></script>
+<script src="js/alert.min_mensaje.js"></script>
 </head>
 
 <body>
@@ -46,7 +46,7 @@ switch($numero)
 					icon: 'info',
 					content: 'Validacion de registro exitosa. Ya puede iniciar sesion.',
 					callback: function() {
-                    location.href = "../index.html";
+                    location.href = "index.html";
                     }
 					});
     			});
@@ -64,7 +64,7 @@ switch($numero)
 					icon: 'warning',
 					content: 'Este usuario ya ha sido registrado.',
 					callback: function() {
-                    location.href = "../index.html";
+                    location.href = "index.html";
                     }
 					});
     			});
@@ -84,7 +84,7 @@ switch($numero)
 					icon: 'error',
 					content: 'Link no valido.',
 					callback: function() {
-                    location.href = "../index.html";
+                    location.href = "index.html";
                     }
 					});
     			});

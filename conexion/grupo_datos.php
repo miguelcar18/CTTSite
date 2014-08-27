@@ -56,9 +56,14 @@
 				$sqlingreso=mysql_query($stringingreso) or die ("Error al ingresar los datos".mysql_error());
 				?>
 				<script>
-					var opcionesls = { 'data<?php echo $verGrupoOpcion?>' : '<?php echo $valor?>'};
-					localStorage.setItem('ls<?php echo $verGrupoOpcion?>', JSON.stringify(opcionesls));
-					var obtenerls = JSON.parse(localStorage.getItem('<?php echo $verGrupoOpcion?>'));
+                                        /*
+					var opcionesls = { 'data<?php //echo $verGrupoOpcion?>' : '<?php //echo $valor?>'};
+					localStorage.setItem('ls<?php //echo $verGrupoOpcion?>', JSON.stringify(opcionesls));
+					var obtenerls = JSON.parse(localStorage.getItem('<?php //echo $verGrupoOpcion?>'));
+                                        */
+                                           
+                                        localStorage.data<?php echo $verGrupoOpcion?>='<?php echo $valor?>';
+                                        var obtenerls =localStorage.data<?php echo $verGrupoOpcion?>;
 				</script>
                 <?php
 			}
@@ -70,10 +75,14 @@
 				$sqlupdate=mysql_query($stringupdate) or die ("Error al actualizar los datos: ".mysql_error());
 				?>
 				<script>
-					localStorage.removeItem('ls<?php echo $verGrupoOpcion?>');
-					var opcionesls = { 'data<?php echo $verGrupoOpcion?>' : '<?php echo $valor?>'};
-					localStorage.setItem('ls<?php echo $verGrupoOpcion?>', JSON.stringify(opcionesls));
-					var obtenerls = JSON.parse(localStorage.getItem('<?php echo $verGrupoOpcion?>'));
+					localStorage.removeItem('data<?php echo $verGrupoOpcion?>');
+                                        /*
+					var opcionesls = { 'data<?php //echo $verGrupoOpcion?>' : '<?php //echo $valor?>'};
+					localStorage.setItem('ls<?php //echo $verGrupoOpcion?>', JSON.stringify(opcionesls));
+					var obtenerls = JSON.parse(localStorage.getItem('<?php //echo $verGrupoOpcion?>'));
+                                        */
+                                        localStorage.data<?php echo $verGrupoOpcion?>='<?php echo $valor?>';
+                                        var obtenerls =localStorage.data<?php echo $verGrupoOpcion?>;
 				</script>
                 <?php
 			}
@@ -81,9 +90,12 @@
                         {
                             ?>
                             <script>
-                            localStorage.removeItem('nombrekey');
-                            var setnombre = { 'nombre_u' : '<?php echo $valor?>'};
+                            localStorage.removeItem('nombre_u');
+                            /*
+                            var setnombre = { 'nombre_u' : '<?php //echo $valor?>'};
                             localStorage.setItem('nombrekey', JSON.stringify(setnombre));
+                            */
+                            localStorage.nombre_u='<?php echo $valor?>';
                             </script>
                             <?php
                         }
@@ -91,23 +103,28 @@
                         {
                             ?>
                             <script>
-                            localStorage.removeItem('apellidokey');
-                            var setapellido = { 'apellido_u' : '<?php echo $valor?>'};
+                            localStorage.removeItem('apellido_u');
+                            /*
+                            var setapellido = { 'apellido_u' : '<?php //echo $valor?>'};
                             localStorage.setItem('apellidokey', JSON.stringify(setapellido));
+                            */
+                            localStorage.apellido_u='<?php echo $valor?>';
                             </script>
                             <?php
                         }
 			?>
             <script>
+                /*
             var nombrekey0 = JSON.parse(localStorage.getItem('nombrekey'));
             var apellidokey0 = JSON.parse(localStorage.getItem('apellidokey'));
-            var nombrecompleto0=""+nombrekey0.nombre_u+" "+apellidokey0.apellido_u;
+            */
+            var nombrecompleto0=""+localStorage.nombre_u+" "+localStorage.apellido_u;
 
             $(document).ready(function(){
 				$("#chck"+<?php echo $verGrupoOpcion?>+"").prop("checked", false);
 				$("#texto_"+<?php echo $verGrupoOpcion?>+"").attr("disabled", true);
 				//donde dice holaaaaa debe ir obtenerls.<?php //echo $verGrupoOpcion?>
-				$("#texto_"+<?php echo $verGrupoOpcion?>+"").val(""+obtenerls.<?php echo $verGrupoOpcion?>+"");
+				$("#texto_"+<?php echo $verGrupoOpcion?>+"").val(""+obtenerls+"");
                                 $("#titulo").html(""+nombrecompleto0+"");
             });
         </script>

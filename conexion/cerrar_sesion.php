@@ -5,18 +5,9 @@
 		<script src="../js/alert.min_mensaje.js"></script>
         <script>
            localStorage.clear();
-            $(document).ready(function(){
-                $.alert.open({
-                title: 'MENSAJE',
-                icon: 'info',
-                content: 'Ha cerrado la sesion correctamente.',
-                callback: function() {
-                    location.href = "../index.html";
-                    }
-            });
-            });
         </script>
         <?php
-		
+		include("funciones_mysql.php");
+		pasar("../index.html");
         
     ?>
