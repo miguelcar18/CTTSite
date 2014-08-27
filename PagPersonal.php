@@ -245,11 +245,11 @@
                                             <form name="form_personal" id="form_personal">
                                                 <input name="hiddenid3" id="hiddenid3" type="hidden" value="">
                                                 <span>Nombre ususario o nick</span>
-                                                <input type="text" class="text" id="txtnick" name="txtnick" value="Nick" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                <input type="text" class="text" id="txtnick" name="txtnick" value="Nick" onblur="if (this.value == '') {
                                                     this.value = 'Nick';
                                                 }">
                                                 <span>eMail</span>
-                                                <input type="text" class="text" id="txtmail" name="txtmail" value="contrase&ntilde;a" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                <input type="text" class="text" id="txtmail" name="txtmail" value="contrase&ntilde;a"  onblur="if (this.value == '') {
                                                 this.value = 'contrase&ntilde;a';
                                                 }">
                                                 <span>Idioma preferido</span>			
@@ -288,14 +288,14 @@
                                             <form name="form_password" id="form_password">
                                                 <input name="hiddenid2" id="hiddenid2" type="hidden" value="">
                                                 <span>Contrase&ntilde;a actual</span>
-                                                <input type="text" class="text" id="passactual" name="passactual" value="Nick" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                                this.value = 'Nick';}">
+                                                <input type="password" class="text" id="passactual" name="passactual" value="" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                this.value = '';}">
                                                 <span>Nueva contrase&ntilde;a</span>
-                                                <input type="text" class="text" id="passnew01" name="passnew01" value="contrase&ntilde;a" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                                this.value = 'contrase�a';}">
+                                                <input type="password" class="text" id="passnew01" name="passnew01" value="" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                this.value = '';}">
                                                 <span>Repita contrase&ntilde;a</span>
-                                                <input type="text" class="text" id="passnew02" name="passnew02" value="contrase&ntilde;a" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                                this.value = 'contrase&ntilde;a';}">
+                                                <input type="password" class="text" id="passnew02" name="passnew02" value="" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                                this.value = '';}">
 						<div class="rel_para"></div>
 						<div class="main grid">
                                                     <div class="col-1-2">
