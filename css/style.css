@@ -280,12 +280,12 @@ h2.resp-accordion:first-child {
 .combo {
 	font-family: 'open_sansregular';
 	padding: 10px;
-	width: 100%;	
+	width: 95%;	
 	outline: none;
 	color: #C1CFD9;
 	background: #FFFFFF;
-	font-size: 1.2em;
-	line-height: 1.5em;
+	font-size: 1em;
+	line-height: 1em;
 	border: 1px solid #D6D6D6;
 	-webkit-appearance: none;
 
@@ -297,11 +297,41 @@ h2.resp-accordion:first-child {
 
 
 .vertical_post form input[type="text"]{
+	font-family: 'open_sansregular';
+	padding: 10px;
+	outline: none;
+	color: #C1CFD9;
+	background: #FFFFFF;
+	width: 95%;
+	font-size: 1em;
+	line-height: 0.8em;
+	position: relative;
+	border: 1px solid #D6D6D6;
+	-webkit-appearance: none;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;	
 }
+
+.vertical_post form input[type="password"]{
+	font-family: 'open_sansregular';
+	padding: 10px;
+	outline: none;
+	color: #C1CFD9;
+	background: #FFFFFF;
+	width: 95%;
+	font-size: 1em;
+	line-height: 0.8em;
+	position: relative;
+	border: 1px solid #D6D6D6;
+	-webkit-appearance: none;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+
 .vertical_post form textarea{
 	resize: none;
 	height: 120px;
@@ -311,12 +341,12 @@ h2.resp-accordion:first-child {
 	margin-right: 3.3333%;
 }
 .vertical_post form input[type="button"] {
-	width: 31.333%;
+	width: 40.333%;
 	float: left;
 	font-family: 'open_sansregular';
 	background: #C1CFD9;
 	color: #ffffff;
-	font-size: 1em;
+	font-size: 10pt;
 	padding: 10px;
 	border: none;
 	cursor: pointer;
@@ -327,21 +357,21 @@ h2.resp-accordion:first-child {
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
-	border-radius: 2px;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	-o-border-radius: 2px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
 }
 .vertical_post form input[type="button"]:hover {
 	background: #9EB0BD;
 }
 .vertical_post form input[type="submit"] {
-		width: 75.333%;
-	float:left;
+	width: 75.333%;
+	float:center;
 	font-family: 'open_sansregular';
 	background: #A8BD44;
 	color: #ffffff;
-	font-size:1em;
+	font-size:10pt;
 	padding: 10px;
 	border: none;
 	cursor: pointer;
@@ -363,26 +393,27 @@ h2.resp-accordion:first-child {
 }
 
 .vertical_post form input[type="reset"] {
-		width: 75.333%;
-	float:left;
+	width: 40.333%;
+	float: left;
 	font-family: 'open_sansregular';
-	background:  #F97E76;
+	background: #F97E76;
 	color: #ffffff;
-	font-size:1em;
+	font-size: 10pt;
 	padding: 10px;
 	border: none;
 	cursor: pointer;
-	text-transform:uppercase;
+	text-transform: uppercase;
 	line-height: 1.5em;
 	outline: none;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-o-border-radius: 5px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	
 }
 
 .vertical_post form input[type="reset"]:hover {
@@ -544,9 +575,9 @@ h2.resp-accordion:first-child {
 	outline: none;
 	color: #C1CFD9;
 	background: #FFFFFF;
-	width: 66.333%;
-	font-size: 0.8725em;
-	line-height: 1.5em;
+	width: 95%;
+	font-size: 1em;
+	line-height: 0.8em;
 	position: relative;
 	border: 1px solid #D6D6D6;
 	-webkit-appearance: none;
@@ -555,15 +586,34 @@ h2.resp-accordion:first-child {
 	-moz-border-radius: 5px;
 	-o-border-radius: 5px;
 }
+
+.subscribe form input[type="password"]{
+	font-family: 'open_sansregular';
+	padding: 10px;
+	outline: none;
+	color: #C1CFD9;
+	background: #FFFFFF;
+	width: 95%;
+	font-size: 1em;
+	line-height: 0.8em;
+	position: relative;
+	border: 1px solid #D6D6D6;
+	-webkit-appearance: none;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+
 .subscribe form input[type="submit"]{
 	font-family: 'open_sansregular';
 	background: #A8BD44;
 	color: #ffffff;
-	font-size:1em;
+	font-size:10pt;
 	padding: 10px;
 	border: none;
 	cursor: pointer;
-	width: 25.333%;
+	width: 35.333%;
 	text-transform:uppercase;
 	position: absolute;
 	right:15px;
