@@ -1,5 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `cttsite` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `cttsite`;
+
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
 -- Host: 127.0.0.1    Database: cttsite
