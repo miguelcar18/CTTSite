@@ -1,16 +1,16 @@
 <html>
-    <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
-<link href="css/alert.min_mensaje.css" rel="stylesheet"/>
-<link href="css/theme.min_mensaje.css" rel="stylesheet"/>
-<script src="js/jquery_mensaje.js"></script>
-<script src="js/jquery-ui_mensaje.js"></script>
-<script src="js/alert.min_mensaje.js"></script>
-</head>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Documento sin título</title>
+		<link href="css/alert.min_mensaje.css" rel="stylesheet"/>
+		<link href="css/theme.min_mensaje.css" rel="stylesheet"/>
+		<script src="js/jquery_mensaje.js"></script>
+		<script src="js/jquery-ui_mensaje.js"></script>
+		<script src="js/alert.min_mensaje.js"></script>
+	</head>
 
-<body>
-<?php
+	<body>
+		<?php
 include("conexion/funciones_mysql.php");
 $conn=conectar();
 
@@ -38,63 +38,64 @@ switch($numero)
                     . "enabled='1' "
                     . "where hash='".$variable."'";
             $sql02=mysql_query($string02) or die ('Error: '.mysql_error());
-            ?>
-            <script>
-				$(document).ready(function(){
-					$.alert.open({
-					title: 'MENSAJE',
-					icon: 'info',
-					content: 'Validacion de registro exitosa. Ya puede iniciar sesion.',
-					callback: function() {
-                    location.href = "index.html";
-                    }
-					});
-    			});
-            </script>
-            <?php
-            //pasar("../index.html");
-        }
-        else
-        {
-            ?>
-            <script>
-				$(document).ready(function(){
-					$.alert.open({
-					title: 'ADVERTENCIA',
-					icon: 'warning',
-					content: 'Este usuario ya ha sido registrado.',
-					callback: function() {
-                    location.href = "index.html";
-                    }
-					});
-    			});
-            </script>
-            <?php
-            //pasar("../index.html");
-        }
-    }
-    break;
-    case "0":
-    {
-        ?>
-            <script>
-				$(document).ready(function(){
-					$.alert.open({
-					title: 'ERROR',
-					icon: 'error',
-					content: 'Link no valido.',
-					callback: function() {
-                    location.href = "index.html";
-                    }
-					});
-    			});
-            </script>
-            <?php
-            //pasar("../index.html");
-    }
-    break;
-}
-?>
-</body>
+
+		?>
+		<script>
+			$(document).ready(function() {
+				$.alert.open({
+					title : 'MENSAJE',
+					icon : 'info',
+					content : 'Validacion de registro exitosa. Ya puede iniciar sesion.',
+					callback : function() {
+						location.href = "index.html";
+					}
+				});
+			});
+		</script>
+		<?php
+		//pasar("../index.html");
+		}
+		else
+		{
+		?>
+		<script>
+			$(document).ready(function() {
+				$.alert.open({
+					title : 'ADVERTENCIA',
+					icon : 'warning',
+					content : 'Este usuario ya ha sido registrado.',
+					callback : function() {
+						location.href = "index.html";
+					}
+				});
+			});
+		</script>
+		<?php
+		//pasar("../index.html");
+		}
+		}
+		break;
+		case "0":
+		{
+		?>
+		<script>
+			$(document).ready(function() {
+				$.alert.open({
+					title : 'ERROR',
+					icon : 'error',
+					content : 'Link no valido.',
+					callback : function() {
+						location.href = "index.html";
+					}
+				});
+			});
+		</script>
+		<?php
+		//pasar("../index.html");
+		}
+		break;
+		}
+		?>
+	</body>
 
 </html>
