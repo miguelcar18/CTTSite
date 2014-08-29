@@ -94,11 +94,6 @@ CREATE TABLE `ctt_options_values` (
 -- Dumping data for table `ctt_options_values`
 --
 
-LOCK TABLES `ctt_options_values` WRITE;
-/*!40000 ALTER TABLE `ctt_options_values` DISABLE KEYS */;
-INSERT INTO `ctt_options_values` VALUES (1,2,'Miguel Antonio','string',7),(2,3,'Carmona','string',7),(3,19,'Programador',NULL,7);
-/*!40000 ALTER TABLE `ctt_options_values` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `ctt_usuarios_sesiones`
@@ -124,12 +119,6 @@ CREATE TABLE `ctt_usuarios_sesiones` (
 --
 -- Dumping data for table `ctt_usuarios_sesiones`
 --
-
-LOCK TABLES `ctt_usuarios_sesiones` WRITE;
-/*!40000 ALTER TABLE `ctt_usuarios_sesiones` DISABLE KEYS */;
-INSERT INTO `ctt_usuarios_sesiones` VALUES (1,7,NULL,NULL,NULL,NULL,'Windows NT','Google Chrome','2014-08-27 21:35:36'),(2,7,NULL,NULL,NULL,NULL,'Windows NT','Google Chrome','2014-08-27 21:51:15');
-/*!40000 ALTER TABLE `ctt_usuarios_sesiones` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `usuario`
@@ -157,11 +146,6 @@ CREATE TABLE `usuario` (
 -- Dumping data for table `usuario`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (7,'miguelcar18','2AK7cnfzohvx6','1','1','miguelcar1988@hotmail.com',1,'2AvKNjTGvSQ0I','');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
