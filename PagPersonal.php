@@ -1,16 +1,16 @@
 <?php
-include ("conexion/funciones_mysql.php");
-conectar();
+    include("conexion/funciones_mysql.php");
+    conectar();
 
-$stringGrupo = "select * from ctt_grupos_opciones order by id_grupo asc";
-$sqlGrupo = mysql_query($stringGrupo) or die("Error linea 7: " . mysql_error());
-$cantidadGrupo = mysql_num_rows($sqlGrupo);
-
-$stringOpcJav = "select idctt_opciones, desc_opcion from ctt_opciones order by id_grupo asc";
-$sqlOpcJav = mysql_query($stringOpcJav) or die("Error linea 10: " . mysql_error());
-$sqlOpcJav2 = mysql_query($stringOpcJav) or die("Error linea 11: " . mysql_error());
-$cantOpcJav = mysql_num_rows($sqlOpcJav);
-$cantOpcJav2 = mysql_num_rows($sqlOpcJav2);
+    $stringGrupo="select * from ctt_grupos_opciones order by id_grupo asc";
+    $sqlGrupo=mysql_query($stringGrupo) or die ("Error linea 7: ".mysql_error());
+    $cantidadGrupo=mysql_num_rows($sqlGrupo);
+    
+    $stringOpcJav="select idctt_opciones, desc_opcion from ctt_opciones order by id_grupo asc";
+    $sqlOpcJav=mysql_query($stringOpcJav) or die("Error linea 10: ".mysql_error());
+	$sqlOpcJav2=mysql_query($stringOpcJav) or die("Error linea 11: ".mysql_error());
+    $cantOpcJav=mysql_num_rows($sqlOpcJav);
+	$cantOpcJav2=mysql_num_rows($sqlOpcJav2);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -38,33 +38,33 @@ $cantOpcJav2 = mysql_num_rows($sqlOpcJav2);
         <!----start-accordinatio-files--->	
                 
         <script>
-			//alert(localStorage.length);
-			/*
-			var object2 = JSON.parse(localStorage.getItem('key'));
-			var nombrekey = JSON.parse(localStorage.getItem('nombrekey'));
-			var apellidokey = JSON.parse(localStorage.getItem('apellidokey'));
-			var nickkey = JSON.parse(localStorage.getItem('nickkey'));
-			var emailkey = JSON.parse(localStorage.getItem('emailkey'));
-			var idiomakey = JSON.parse(localStorage.getItem('idiomakey'));
-			var paiskey = JSON.parse(localStorage.getItem('paiskey'));
-			*/
-			// Mostrar variabes localstorage
-			/*alert(object2.nick_u);
-			 alert(object2.clave_u);
-			 alert(object2.nombre_u);
-			 alert(object2.id_u);*/
+            //alert(localStorage.length);
+            /*
+            var object2 = JSON.parse(localStorage.getItem('key'));
+            var nombrekey = JSON.parse(localStorage.getItem('nombrekey'));
+            var apellidokey = JSON.parse(localStorage.getItem('apellidokey'));
+            var nickkey = JSON.parse(localStorage.getItem('nickkey'));
+            var emailkey = JSON.parse(localStorage.getItem('emailkey'));
+            var idiomakey = JSON.parse(localStorage.getItem('idiomakey'));
+            var paiskey = JSON.parse(localStorage.getItem('paiskey'));
+            */
+            // Mostrar variabes localstorage
+            /*alert(object2.nick_u);
+            alert(object2.clave_u);
+            alert(object2.nombre_u);
+            alert(object2.id_u);*/
 			$(document).ready(function() {
 				$('#hiddenid').val(localStorage.id_u);
-				$('#txtnick').val(localStorage.nick_usu);
-				$('#txtmail').val(localStorage.email_usu);
-				$('#titulo').val("" + localStorage.nombre_u + " " + localStorage.apellido_u);
-				$('#lg' + localStorage.idioma_usu + '').attr('selected', 'selected');
-				$('#ct' + localStorage.pais_usu + '').attr('selected', 'selected');
-			});
+                                $('#txtnick').val(localStorage.nick_usu);
+                                $('#txtmail').val(localStorage.email_usu);
+                                $('#titulo').val(""+localStorage.nombre_u+" "+localStorage.apellido_u);
+                                $('#lg'+localStorage.idioma_usu+'').attr('selected', 'selected');
+                                $('#ct'+localStorage.pais_usu+'').attr('selected', 'selected');
+            });
         </script>
         
         <script type="text/javascript">
-            			$(document).ready(function() {
+            $(document).ready(function() {
                 $('#horizontalTab').easyResponsiveTabs({
                     type: 'default', //Types: default, vertical, accordion           
                     width: 'auto', //auto or any width like 600px
@@ -148,19 +148,18 @@ $cantOpcJav2 = mysql_num_rows($sqlOpcJav2);
 			$idGrupo2=$campoOpcJavb['idctt_opciones'];
 			$descOpcion2=$campoOpcJavb['desc_opcion'];
 			$nmarca2=$idGrupo2;
-		?>//var object1 = JSON.parse(localStorage.getItem('ls<?php //echo $nmarca2 ?>
-			'));
-			if(localStorage.data
-<?php echo $nmarca2 ?>)
+		?>
+		//var object1 = JSON.parse(localStorage.getItem('ls<?php //echo $nmarca2 ?>'));
+				if(localStorage.data<?php echo $nmarca2 ?>)
 				{
 					var data0101=localStorage.data<?php echo $nmarca2 ?>;
-                	$('#texto_<?php echo $nmarca2 ?>
-						').val(data0101);
-						}
+                	$('#texto_<?php echo $nmarca2 ?>').val(data0101);
+				}
 			<?php
-			}
+		}
 			?>
-				});
+				
+	    });
 	</script>
 	<!----Calender -------->
 	<link rel="stylesheet" href="css/clndr.css" type="text/css" />
@@ -169,7 +168,9 @@ $cantOpcJav2 = mysql_num_rows($sqlOpcJav2);
 	<script src="js/clndr.js"></script>
 	<script src="js/site.js"></script>
 	<!----End Calender -------->
-        <script language ="Javascript"><?php  
+        <script language ="Javascript">
+
+		<?php  
 		for ($aaa=1; $aaa<=$cantOpcJav; $aaa++)
 		{
 			$campoOpcJav=mysql_fetch_array($sqlOpcJav);
@@ -178,26 +179,20 @@ $cantOpcJav2 = mysql_num_rows($sqlOpcJav2);
 			$nmarca=$idGrupo;
 		?>
 		
-					function marca_<?php echo $nmarca ?>(){
+		function marca_<?php echo $nmarca ?>(){
 		
-		if(document.getElementById("chck<?php echo $nmarca ?>
-			").checked){
-			document.getElementById("texto_
-<?php echo $nmarca ?>
-			").disabled=false;
-			document.getElementById("texto_
-<?php echo $nmarca ?>
-			").focus();
-			}
-			else{
-			document.getElementById("texto_
-<?php echo $nmarca ?>
-			").disabled=true;
-			}
-			}
+		if(document.getElementById("chck<?php echo $nmarca ?>").checked){
+		document.getElementById("texto_<?php echo $nmarca ?>").disabled=false;
+		document.getElementById("texto_<?php echo $nmarca ?>").focus();
+		}
+		else{
+		document.getElementById("texto_<?php echo $nmarca ?>").disabled=true;
+		}
+		}
 		<?php
 		}
-		?></script>
+		?>
+        </script>
     </head>
     <body>
 	<!--Menu-->
@@ -206,7 +201,7 @@ $cantOpcJav2 = mysql_num_rows($sqlOpcJav2);
                 <li><a href="#"><i class="icon_1"></i></a></li>
                 <li><a href="#"><i class="icon_2"></i></a></li>
                 <li><a href="#"><i class="icon_3"></i></a></li>
-                <li><a href="conexion/cerrar_sesion.php" title="Cerrar Sesiï¿½n"><i class="icon_4"></i></a></li>
+                <li><a href="conexion/cerrar_sesion.php" title="Cerrar Sesión"><i class="icon_4"></i></a></li>
                 <div class="clear"></div>
             </ul>
             <div class="search">
@@ -260,14 +255,14 @@ $cantOpcJav2 = mysql_num_rows($sqlOpcJav2);
                                                 <span>Idioma preferido</span>			
                                                 <select name="idioma" id="idioma" class="combo" >
                                                     <option name="lg0" id="lg0" value="0"> < < Seleccione > > </option>
-                                                    <option name="lg1" id="lg1" value="1"> Espaï¿½ol </option>
-                                                    <option name="lg2" id="lg2" value="2"> Inglï¿½s </option>
-                                                    <option name="lg3" id="lg3" value="3"> Francï¿½s </option>
+                                                    <option name="lg1" id="lg1" value="1"> Español </option>
+                                                    <option name="lg2" id="lg2" value="2"> Inglés </option>
+                                                    <option name="lg3" id="lg3" value="3"> Francés </option>
                                                 </select>
                                                 <span>Pais</span>
                                                 <select name="pais" id="pais" class="combo" >
                                                     <option name="ct0" id="ct0" value="0"> < < Seleccione > > </option>
-                                                    <option name="ct1" id="ct1" value="1"> Espaï¿½a </option>
+                                                    <option name="ct1" id="ct1" value="1"> España </option>
                                                     <option name="ct2" id="ct2" value="2"> Francia </option>
                                                     <option name="ct3" id="ct3" value="3"> Portugal </option>
                                                 </select>
@@ -344,8 +339,7 @@ $cantOpcJav2 = mysql_num_rows($sqlOpcJav2);
                                                                 <div class="rel__check" style="float:left;width:100%">	
                                                                     <div style="float:left;width:10%">
                                                                     <script>
-																																				var objectct = JSON.parse(localStorage.getItem('<?php echo $idctt_opciones ?>
-																		'));
+																		var objectct = JSON.parse(localStorage.getItem('<?php echo $idctt_opciones ?>'));
 																	</script>
                                                                         <input type="checkbox" name="chck<?php echo $idctt_opciones?>" id="chck<?php echo $idctt_opciones?>" onclick="marca_<?php echo $idctt_opciones ?>()">
                                                                     </div>
@@ -360,12 +354,12 @@ $cantOpcJav2 = mysql_num_rows($sqlOpcJav2);
                                                             </div>
                                                             <div class="clear"></div>
                                                             <?php
-															}
+                                                        }
                                                             ?>
                                                             <!-- BOTONES APARTE-->
                                                     </div>
                                                     <?php
-													}
+                                            }
                                                     ?>
                                             <div class="acord_btns">
                                             
